@@ -158,7 +158,7 @@ body.autop #apbar{display:none}
 
 <div class="ov" id="npc"><div class="box" role="dialog" aria-modal="true" aria-labelledby="npct">
   <div class="pass" style="margin-top:0"><div class="av">RS</div><div><strong id="npct">Resepsionis</strong><br><span style="color:var(--mut)">Lobi · Kantor Pak Dede Deni Rahmawan</span></div></div>
-  <p class="say">“Selamat datang! Saya resepsionis Pak Dede Deni Rahmawan. Silakan ikuti garis penunjuk di lantai untuk melihat rekam jejak proyek otomotif beliau dari PT Toyoplas hingga PT Pacific Rubber Works.”</p>
+  <p class="say">“Selamat datang! Saya resepsionis Pak Dede Deni Rahmawan. Silakan ikuti garis penunjuk untuk melihat experineces.”</p>
   <div class="row"><button id="npcgo">Mulai dari PT Toyoplas →</button><button class="alt" id="npccard">💳 Kartu Nama Digital</button><button class="alt" id="npcx">Tutup</button></div>
 </div></div>
 
@@ -1027,7 +1027,7 @@ const rc=person({skin:skins[1],hair:0x1a1a1a,k:'blazer'});rc.g.position.set(0,0,
   x.fillStyle='#f2b705';x.fillRect(0,0,w,22);x.fillRect(0,h-22,w,22);
   x.textAlign='center';x.textBaseline='middle';x.fillStyle='#f2b705';x.font='800 64px Archivo, sans-serif';x.fillText('Selamat',w/2,120);x.fillText('Datang HRD!',w/2,196);
   x.fillStyle='#fff';x.font='700 41px Archivo, sans-serif';
-  const words='Dekati 6 area perusahaan untuk melihat bukti pencapaian kerja Dede Deni Rahmawan.'.split(' ');let line='',y=300;
+  const words='Dekati 6 area meja untuk melihat pengalaman - pengalaman.'.split(' ');let line='',y=300;
   words.forEach(wd=>{const tt=line?line+' '+wd:wd;if(x.measureText(tt).width>440&&line){x.fillText(line,w/2,y);y+=58;line=wd}else line=tt});x.fillText(line,w/2,y);
   x.fillStyle='#f2b705';x.fillRect(56,610,400,70);x.fillStyle='#14213d';x.font='800 36px Archivo, sans-serif';x.fillText('Ikuti garis kuning',w/2,646);
   x.fillStyle='#fff';x.font='600 30px Archivo, sans-serif';x.fillText('Tekan E di dekat area',w/2,735)});
