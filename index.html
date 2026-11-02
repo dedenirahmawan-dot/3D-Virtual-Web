@@ -28,6 +28,26 @@ canvas{display:block;width:100%;height:100%;touch-action:none}
 #knob{position:absolute;left:34px;top:34px;width:48px;height:48px;border-radius:50%;background:var(--ac);box-shadow:0 6px 16px rgba(43,79,224,.5)}
 #jump{position:fixed;right:calc(22px + env(safe-area-inset-right,0px));bottom:calc(40px + env(safe-area-inset-bottom,0px));width:74px;height:74px;border-radius:50%;border:1px solid var(--gb);background:var(--ac2);box-shadow:0 8px 22px rgba(0,0,0,.25);font:800 13px 'Archivo',sans-serif;color:#14213d;display:none;padding:0}
 @media (pointer:coarse){#joy,#jump{display:block}#hint{display:none}#prompt{bottom:calc(214px + env(safe-area-inset-bottom,0px))}#sitp{bottom:calc(270px + env(safe-area-inset-bottom,0px))}#trailhud{bottom:calc(152px + env(safe-area-inset-bottom,0px))}}
+
+/* ===== GATEWAY / DIGITAL VISITOR LOG ===== */
+#gate{z-index:20;background:rgba(10,16,38,.46);-webkit-backdrop-filter:blur(18px) saturate(130%);backdrop-filter:blur(18px) saturate(130%)}
+#gate .box{max-width:480px;padding:28px 26px 22px}
+#gate h2{font-size:clamp(22px,5vw,28px);margin:0 0 6px;letter-spacing:-.01em}
+#gate .gsub{font-size:14px;margin:0 0 16px}
+#gate .fld{display:block;margin:0 0 12px}
+#gate .fld>span{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:0 0 5px}
+#gate .fld>span em{font-style:normal;color:var(--mut);font-weight:600}
+#gate .fld>span b{color:#d6336c}
+#gate input,#gate select{width:100%;font:600 16px 'Archivo',system-ui,sans-serif;color:var(--ink);background:color-mix(in srgb,var(--bg) 70%,transparent);border:1px solid var(--line);border-radius:12px;padding:12px 14px;outline:none;transition:border-color .15s,box-shadow .15s}
+#gate input::placeholder{color:var(--mut);opacity:.7;font-weight:500}
+#gate input:focus,#gate select:focus{border-color:var(--ac);box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 25%,transparent)}
+#gate .bad{border-color:#d6336c!important}
+#gate .err{display:none;color:#d6336c;font-size:12px;font-weight:700;margin:4px 0 0}
+#gate .err.show{display:block}
+#gate #gateGo{width:100%;margin-top:6px;padding:14px 20px;font-size:16px}
+#gate #gateGo[disabled]{opacity:.6;cursor:wait}
+#gate .fast{display:block;width:100%;margin-top:10px;text-align:center;padding:11px 16px;font-size:14px}
+#gate .gnote{font-size:11.5px;text-align:center;margin:12px 0 0;color:var(--mut)}
 .ov{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(10,16,38,.34);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);z-index:5;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility 0s linear .28s}
 .ov.on{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .28s ease}
 .box{border-radius:20px;max-width:560px;width:100%;max-height:88vh;overflow:auto;padding:26px;box-shadow:var(--sh);transform:translateY(28px) scale(.98);opacity:0;transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
@@ -123,12 +143,25 @@ button.tabb{padding:8px 13px;font-size:13px;border-radius:999px}
 .bigok{font-size:58px;line-height:1;margin:0 0 6px}
 body.autop #apbar{display:none}
 .spec{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:8px 0 4px;font-size:14.5px;line-height:1.45}.spec b{color:var(--ink)}.spec span{color:var(--mut)}@media (max-width:560px){.spec{grid-template-columns:1fr;gap:0}.spec span{margin-bottom:8px}}
+#tr #snd{pointer-events:auto;cursor:pointer;font-family:inherit;font-weight:600;font-size:14px;color:var(--ink);background:var(--glass);border:1px solid var(--gb);border-radius:999px;padding:7px 14px;line-height:1.2;box-shadow:0 8px 24px rgba(20,33,61,.16);-webkit-backdrop-filter:blur(12px) saturate(140%);backdrop-filter:blur(12px) saturate(140%);transform:none}
+#tr #snd:hover{background:var(--glass);transform:scale(1.08)}
+.simgrid{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;margin-top:6px}
+@media (max-width:760px){.simgrid{grid-template-columns:1fr;gap:6px}}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.simnote{font-size:13px;line-height:1.45;color:var(--ink);margin:12px 0 0;padding:9px 12px;border-radius:10px;background:rgba(31,163,122,.14)}
+.simnote.warn{background:rgba(242,183,5,.22)}
+.rcard{border:1px solid var(--line);border-left-width:5px;border-radius:14px;padding:10px 14px;margin:0 0 9px;background:color-mix(in srgb,var(--ac) 4%,transparent)}
+.rcard .rk{display:block;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--mut)}
+.rcard b{display:block;font-size:16.5px;line-height:1.35;color:var(--ink);margin-top:2px}
+.rcard small{display:block;color:var(--mut);font-size:12.5px;margin-top:3px;line-height:1.4}
+.rcard.k1{border-left-color:#2b4fe0}.rcard.k2{border-left-color:#8b45d6}.rcard.k3{border-left-color:#1fa37a}.rcard.k4{border-left-color:#e05a2b}
+#tstep{margin-bottom:10px}
 </style>
 </head>
 <body>
 <canvas id="c" aria-label="Dunia 3D portofolio"></canvas>
 <div class="hud" id="tl"><span class="chip" id="clock">Masuk --:--</span></div>
-<div class="hud" id="tr"><span class="chip" id="stamp">Diperiksa 0/6</span><span class="chip" id="bolt">Baut 0/12</span></div>
+<div class="hud" id="tr"><span class="chip" id="stamp">Diperiksa 0/6</span><span class="chip" id="bolt">Baut 0/12</span><button class="chip" id="snd" type="button" aria-pressed="false" title="Matikan musik (M)" aria-label="Matikan musik (M)">🔊</button></div>
 <nav class="hud" id="nav" aria-label="Navigasi cepat HRD"><button class="pri" id="nav2d">📄 <span class="lg">Lihat Ringkasan CV 2D</span><span class="sm">CV 2D</span></button><i class="sep"></i><button id="navauto" title="Tur otomatis (Autopilot) — kamera terbang ke tiap perusahaan; berpindah hanya saat Anda klik Lanjut">🎬 <span class="lg">Tur Otomatis</span><span class="sm">Auto</span></button><i class="sep"></i><a id="navpdf" href="CV_Dede_Deni_Rahmawan.pdf" download>📥 <span class="lg">Unduh PDF CV</span><span class="sm">PDF</span></a><i class="sep"></i><button id="navhelp">❓ <span class="lg">Cara Navigasi</span><span class="sm">Cara</span></button></nav>
 <div class="hud" id="hint">Ikuti garis kuning · WASD / panah jalan · E periksa · F duduk · Spasi lompat · seret untuk menoleh</div>
 <div class="hud" id="prompt" role="button" tabindex="0">Periksa area (E)</div>
@@ -140,7 +173,22 @@ body.autop #apbar{display:none}
 <div id="joy"><div id="knob"></div></div>
 <button id="jump" aria-label="Lompat">Lompat</button>
 
-<div class="ov on" id="intro"><div class="box">
+<!-- GATEWAY: BUKU TAMU DIGITAL (tampil pertama kali sebelum pengguna bisa mengontrol karakter) -->
+<div class="ov" id="gate" role="presentation"><div class="box" role="dialog" aria-modal="true" aria-labelledby="gatet">
+  <h2 id="gatet">👋 Selamat Datang di Kantor Virtual</h2>
+  <p class="gsub">Silakan isi buku tamu digital sebelum masuk ke kantor Pak Dede Deni Rahmawan.</p>
+  <form id="gateForm" novalidate autocomplete="on">
+    <label class="fld"><span>Nama Lengkap <b>*</b></span><input id="gNama" name="nama" type="text" maxlength="80" placeholder="Contoh: Budi Santoso" autocomplete="name" required><p class="err" id="eNama">Nama lengkap wajib diisi.</p></label>
+    <label class="fld"><span>Nama Perusahaan / Instansi <b>*</b></span><input id="gPer" name="perusahaan" type="text" maxlength="100" placeholder="Contoh: PT Maju Jaya" autocomplete="organization" required><p class="err" id="ePer">Nama perusahaan / instansi wajib diisi.</p></label>
+    <label class="fld"><span>Kontak / Email / WhatsApp <em>(opsional)</em></span><input id="gKon" name="kontak" type="text" maxlength="100" placeholder="email@perusahaan.com atau 08xxxxxxxxxx" autocomplete="email"></label>
+    <label class="fld"><span>Kategori Tamu</span><select id="gKat" name="kategori"><option>HRD / Rekruiter</option><option>OEM / Tier-1 Buyer</option><option>Rekan Bisnis / Lainnya</option></select></label>
+    <button type="button" id="gateGo">🚀 Masuk ke Kantor Virtual</button>
+    <button type="button" class="alt fast" id="gateFast">⚡ Lihat Langsung CV 2D</button>
+  </form>
+  <p class="gnote">🔒 Data hanya dipakai untuk mencatat kunjungan &amp; menyapa Anda di dalam kantor.</p>
+</div></div>
+
+<div class="ov" id="intro"><div class="box">
   <h1>Dede Deni Rahmawan</h1>
   <p class="role">Sales &amp; Marketing Manager | Automotive Industry</p>
   <p>Sales &amp; Marketing profesional dengan 10+ tahun pengalaman di industri manufaktur otomotif. Berpengalaman dalam key account management, pengembangan proyek baru, strategi harga, dan koordinasi lintas fungsi, mengelola pelanggan Tier 1 dan Tier 2 serta menjalankan siklus proyek penuh dari RFQ hingga mass production.</p>
@@ -158,8 +206,9 @@ body.autop #apbar{display:none}
 
 <div class="ov" id="npc"><div class="box" role="dialog" aria-modal="true" aria-labelledby="npct">
   <div class="pass" style="margin-top:0"><div class="av">RS</div><div><strong id="npct">Resepsionis</strong><br><span style="color:var(--mut)">Lobi · Kantor Pak Dede Deni Rahmawan</span></div></div>
-  <p class="say">“Selamat datang! Saya resepsionis Pak Dede Deni Rahmawan. Silakan ikuti garis penunjuk untuk melihat experineces.”</p>
-  <div class="row"><button id="npcgo">Mulai dari PT Toyoplas →</button><button class="alt" id="npccard">💳 Kartu Nama Digital</button><button class="alt" id="npcx">Tutup</button></div>
+  <p class="say">“Selamat datang! Saya resepsionis Pak Dede Deni Rahmawan. Silakan ikuti garis penunjuk di lantai untuk melihat rekam jejak proyek otomotif beliau dari PT Toyoplas hingga PT Pacific Rubber Works.”</p>
+  <div class="row"><a class="btn alt" href="CV_Dede_Deni_Rahmawan.pdf" download>📥 Unduh CV PDF</a><a class="btn alt" href="Capability_Deck_Dede_Deni_Rahmawan.pdf" download>📥 Unduh Machine Capability &amp; Project Deck (PDF)</a></div>
+  <div class="row"><button id="npcgo">Mulai dari PT Toyoplas →</button><button class="alt" id="npccard">💳 Kartu Nama Digital</button><button class="alt" id="npcswap" style="display:none">Bukan Anda?</button><button class="alt" id="npcx">Tutup</button></div>
 </div></div>
 
 <div class="ov" id="parts"><div class="box wide" role="dialog" aria-modal="true" aria-labelledby="pttl">
@@ -187,7 +236,7 @@ body.autop #apbar{display:none}
   <h2 id="kpit">📊 Sales Performance &amp; KPI Dashboard</h2>
   <p class="role">Dede Deni Rahmawan · Sales &amp; Marketing Manager | Automotive Industry</p>
   <div id="kbody"></div>
-  <div class="row"><a class="btn alt" href="CV_Dede_Deni_Rahmawan.pdf" download>Unduh CV</a><button id="kpix">Tutup</button></div>
+  <div class="row"><a class="btn alt" href="CV_Dede_Deni_Rahmawan.pdf" download>📥 Unduh CV PDF</a><a class="btn alt" href="Capability_Deck_Dede_Deni_Rahmawan.pdf" download>📥 Unduh Machine Capability &amp; Project Deck (PDF)</a><button id="kpix">Tutup</button></div>
 </div></div>
 
 <div class="ov" id="card"><div class="box wide" role="dialog" aria-modal="true" aria-labelledby="cardt">
@@ -223,11 +272,33 @@ body.autop #apbar{display:none}
   <h4 class="dh">Cakupan Produk</h4><ul class="det" id="mpts"></ul>
   <div class="row"><button id="mnext">Cell Berikutnya →</button><button class="alt" id="machx">Tutup</button></div>
 </div></div>
+<div class="ov" id="sim"><div class="box wide" role="dialog" aria-modal="true" aria-labelledby="simt">
+  <h2 id="simt">💰 Project Cost &amp; RFQ Simulator</h2>
+  <p class="role">Pilih part, proses, dan volume — estimasi muncul otomatis.</p>
+  <div class="simgrid">
+    <div>
+      <h4 class="dh">Part Type</h4><div class="seg" id="sgPart" role="radiogroup" aria-label="Part Type"></div>
+      <h4 class="dh">Manufacturing Process</h4><div class="seg" id="sgProc" role="radiogroup" aria-label="Manufacturing Process"></div>
+      <h4 class="dh">Annual Volume</h4><div class="seg" id="sgVol" role="radiogroup" aria-label="Annual Volume"></div>
+      <p class="simnote" id="simfit"></p>
+    </div>
+    <div id="simout" aria-live="polite"></div>
+  </div>
+  <p class="sub" style="margin-top:6px">Estimasi indikatif untuk diskusi awal. Angka final mengikuti RFQ, DFM, dan kesepakatan dengan customer.</p>
+  <div class="row"><button class="alt" id="simreset">↺ Reset</button><button id="simx">Tutup</button></div>
+</div></div>
+<div class="ov" id="tlm"><div class="box wide" role="dialog" aria-modal="true" aria-labelledby="ttitle">
+  <div id="tstep"></div><h2 id="ttitle"></h2><p class="role">Peran Sales &amp; Marketing Manager di fase ini</p>
+  <p class="say" id="tsay"></p>
+  <h4 class="dh">Strategi &amp; Tanggung Jawab</h4><ul class="det" id="tpts"></ul>
+  <div id="ttags" style="margin-top:8px"></div>
+  <div class="row"><button class="alt" id="tprev">← Fase Sebelumnya</button><button id="tnext">Fase Berikutnya →</button><button class="alt" id="tclose">Tutup</button></div>
+</div></div>
 <div class="ov" id="qc"><div class="box" role="dialog" aria-modal="true" aria-labelledby="qct">
   <p class="bigok">✅</p><h2 id="qct">Pemeriksaan Portofolio Selesai (Lolos QC)</h2>
   <p>Terima kasih telah memeriksa seluruh 6 area: 5 perusahaan manufaktur otomotif serta keahlian teknis, pendidikan &amp; analytics. Portofolio ini dinyatakan <strong>lolos QC</strong> — siap untuk tahap wawancara.</p>
   <div class="pass"><div class="av">QC</div><div><strong>Certificate of Completion</strong><br><span style="color:var(--mut)">Dede Deni Rahmawan · 6/6 area diperiksa</span></div></div>
-  <div class="row cta"><button id="qc2d">📄 Baca Ringkasan Versi 2D</button><a class="btn" href="CV_Dede_Deni_Rahmawan.pdf" download>📥 Unduh CV PDF</a></div>
+  <div class="row cta"><button id="qc2d">📄 Baca Ringkasan Versi 2D</button><a class="btn" href="CV_Dede_Deni_Rahmawan.pdf" download>📥 Unduh CV PDF</a><a class="btn alt" href="Capability_Deck_Dede_Deni_Rahmawan.pdf" download>📥 Unduh Machine Capability &amp; Project Deck (PDF)</a></div>
   <div class="row"><button class="alt" id="qccard">💳 Kartu Nama Digital</button><button class="alt" id="qcx">Tutup</button></div>
 </div></div>
 <div class="ov" id="help"><div class="box" role="dialog" aria-modal="true">
@@ -239,6 +310,9 @@ body.autop #apbar{display:none}
     <li><strong>Lompat:</strong> Spasi (HP: tombol Lompat)</li>
     <li><strong>Periksa area:</strong> berdiri di lingkaran emas, lalu tekan E (HP: ketuk tombol biru)</li>
     <li><strong>Tur Otomatis:</strong> klik 🎬 di bar atas — kamera berjalan halus ke tiap perusahaan dan BERHENTI; pindah hanya saat Anda klik “Lanjut ke Perusahaan Berikutnya →” di pop-up (tanpa timer)</li><li><strong>Wall of Excellence:</strong> dekati galeri bingkai sertifikat di dinding kiri, tekan E</li>
+    <li><strong>RFQ Simulator:</strong> kiosk di sisi kiri dekat meja 1 &amp; 2 — tekan E untuk menghitung estimasi lead time, tooling, VAVE, dan spesifikasi mesin</li>
+    <li><strong>Timeline RFQ → Masspro:</strong> panel neon di dinding depan; dekati salah satu dari 5 fase lalu tekan E</li>
+    <li><strong>Audio:</strong> musik santai &amp; efek suara aktif setelah klik/tombol pertama; tombol 🔊 di kanan atas atau tekan M untuk mute</li>
     <li><strong>Meja kerja:</strong> 3 meja di sisi kiri (1–3) dan 3 meja di sisi kanan (4–6); tiap meja punya papan nomor &amp; nama perusahaan, lingkaran emas di lantai untuk tekan E</li>
     <li><strong>Galeri lukisan:</strong> karya terkenal terpajang di sisi belakang dinding logo dan dinding depan</li>
     <li><strong>Manufacturing Bay:</strong> di area kanan depan terdapat 3 cell sejajar (Plastic Injection, Metal Stamping, SMT) — dekati salah satu, tekan E untuk spesifikasi teknis; badge nama cell muncul saat Anda dekat</li>
@@ -305,12 +379,12 @@ const PROJECTS=[
  {t:"PT Chaolong Motor Parts Indonesia",s:"Chaolong",r:"Supervisor, Sales &amp; Marketing",per:"Jun 2022 – Jun 2025",
   g:["Customer Relations","Pricing &amp; Margin","KPI Bulanan","Annual Budget","Demand Forecast"],
   sec:[{h:"Tanggung Jawab &amp; Pencapaian",li:[
-   "Mengelola Customer reduction (CR) dan menangani eskalasi isu pelanggan secara proaktif.",
-   "Menghitung, dan memantau penetapan harga (pricing) untuk melindungi margin keuntungan perusahaan.",
+   "Mengelola Customer Relations (CR) dan menangani eskalasi isu pelanggan secara proaktif.",
+   "Menghitung, merundingkan, dan memantau penetapan harga (pricing) untuk melindungi margin keuntungan perusahaan.",
    "Menyusun dan mempresentasikan laporan KPI bulanan divisi sales kepada top management.",
-   "Menyusun dan mengelola perencanaan anggaran tahunan (annual budget planning) divisi Sales.",
+   "Menyusun dan mengelola perencanaan anggaran tahunan (annual budget planning) divisi penjualan.",
    "Memantau dan mengontrol estimasi demand/forecast pelanggan agar selaras dengan rencana produksi.",
-   "Memimpin akuisisi proyek baru dari tahap awal RFQ, perhitungan Quotation, hingga masuk ke tahap produksi masal (mass production).",
+   "Memimpin akuisisi proyek baru dari tahap awal inquiry, perhitungan kuotasi, hingga masuk ke tahap pengeluaran massal (mass production).",
    "Memperkuat hubungan bisnis dengan basis pelanggan otomotif eksisting."]}],
   l:"CV_Dede_Deni_Rahmawan.pdf",c:0xe05a2b},
  {t:"PT Tri Saudara Sentosa Industry",s:"Tri Saudara",r:"Assistant Supervisor, Marketing",per:"Jan 2021 – Jun 2022",
@@ -362,7 +436,13 @@ const sun=new THREE.DirectionalLight(0xfff8ee,.72);sun.position.set(8,30,-24);su
 sun.shadow.mapSize.set(Math.min(4096,R.capabilities.maxTextureSize),Math.min(4096,R.capabilities.maxTextureSize));sun.shadow.bias=-.0004;sun.shadow.normalBias=.03;sun.shadow.radius=4;Object.assign(sun.shadow.camera,{left:-32,right:32,top:32,bottom:-32,near:1,far:110});S.add(sun);
 // cahaya isi dari depan (tanpa bayangan) agar sisi lobi yang menghadap pemain tidak gelap
 const fill=new THREE.DirectionalLight(0xffffff,.22);fill.position.set(0,12,30);S.add(fill);
-const M=(c,r=.8)=>new THREE.MeshStandardMaterial({color:c,roughness:Math.max(r,.7),metalness:0});
+const M=(c,r=.8)=>new THREE.MeshStandardMaterial({color:c,roughness:Math.max(r,.5),metalness:0});
+// environment map kecil (langit/jendela) untuk pantulan specular — dibuat per renderer
+function makeEnv(rend){try{const c=document.createElement('canvas');c.width=512;c.height=256;const x=c.getContext('2d');
+ const g=x.createLinearGradient(0,0,0,256);g.addColorStop(0,'#ffffff');g.addColorStop(.42,'#dfe9ff');g.addColorStop(.5,'#b9c6e6');g.addColorStop(.58,'#8d9ac0');g.addColorStop(1,'#5d6a92');x.fillStyle=g;x.fillRect(0,0,512,256);
+ x.fillStyle='rgba(255,255,255,.95)';[[40,60],[160,70],[280,55],[400,65]].forEach(q=>x.fillRect(q[0],q[1],70,28));x.fillStyle='rgba(255,236,190,.9)';x.fillRect(200,20,110,16);
+ const t=new THREE.CanvasTexture(c);t.mapping=THREE.EquirectangularReflectionMapping;const pm=new THREE.PMREMGenerator(rend),rt=pm.fromEquirectangular(t);pm.dispose();t.dispose();return rt.texture}catch(e){return null}}
+const ENV=makeEnv(R);let PMENV=ENV;
 function add(geo,mat,x,y,z,p=S){const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=m.receiveShadow=true;p.add(m);return m}
 // lantai & dinding (ruangan medium 48x36, tinggi dinding/plafon 8.8)
 function viewMat(seed,w=512,h=256){let sd=seed*977+13;const r=()=>(sd=(sd*16807)%2147483647)/2147483647;
@@ -689,7 +769,7 @@ function poiRing(x,z,col=0xf2b705){
   const r=new THREE.Mesh(new THREE.RingGeometry(.8,1.05,32),new THREE.MeshBasicMaterial({color:col,side:THREE.DoubleSide}));r.rotation.x=-Math.PI/2;r.position.set(x,.03,z);S.add(r);
   const b=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,2.6,8,1,true),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.35,depthWrite:false}));b.position.set(x,1.3,z);S.add(b)}
 // --- model komponen injeksi plastik otomotif (dipakai di meja showroom & modal 360°)
-const PM=(c,r=.5,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
+const PM=(c,r=.5,m=0)=>{const x=new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});if(PMENV){x.envMap=PMENV;x.envMapIntensity=m>.1?1.1:.6}return x};
 function normPart(g,size,center){
   const w=new THREE.Group();w.add(g);const b=new THREE.Box3().setFromObject(g),sz=new THREE.Vector3(),ct=new THREE.Vector3();b.getSize(sz);b.getCenter(ct);
   g.position.set(-ct.x,center?-ct.y:-b.min.y,-ct.z);w.scale.setScalar(size/Math.max(sz.x,sz.y,sz.z));return w}
@@ -1027,7 +1107,7 @@ const rc=person({skin:skins[1],hair:0x1a1a1a,k:'blazer'});rc.g.position.set(0,0,
   x.fillStyle='#f2b705';x.fillRect(0,0,w,22);x.fillRect(0,h-22,w,22);
   x.textAlign='center';x.textBaseline='middle';x.fillStyle='#f2b705';x.font='800 64px Archivo, sans-serif';x.fillText('Selamat',w/2,120);x.fillText('Datang HRD!',w/2,196);
   x.fillStyle='#fff';x.font='700 41px Archivo, sans-serif';
-  const words='Dekati 6 area meja untuk melihat pengalaman - pengalaman.'.split(' ');let line='',y=300;
+  const words='Dekati 6 area perusahaan untuk melihat bukti pencapaian kerja Dede Deni Rahmawan.'.split(' ');let line='',y=300;
   words.forEach(wd=>{const tt=line?line+' '+wd:wd;if(x.measureText(tt).width>440&&line){x.fillText(line,w/2,y);y+=58;line=wd}else line=tt});x.fillText(line,w/2,y);
   x.fillStyle='#f2b705';x.fillRect(56,610,400,70);x.fillStyle='#14213d';x.font='800 36px Archivo, sans-serif';x.fillText('Ikuti garis kuning',w/2,646);
   x.fillStyle='#fff';x.font='600 30px Archivo, sans-serif';x.fillText('Tekan E di dekat area',w/2,735)});
@@ -1235,10 +1315,10 @@ function hang(g,k,x,y,pw,ph,title,artist,fd){
   dec(gb(16,1.3,.03),fm(0x2b4a9a,.8),0,.65,.015,g);dec(gb(16,.07,.05),fm(0xc9a227,.5),0,1.33,.025,g);fixG(g)}
 { // dinding depan (menghadap ke dalam ruangan)
   const g=wallG(0,0,18.65,Math.PI);
-  hang(g,'pearl',13.5,3.4,1.5,1.9,'Girl with a Pearl Earring','Johannes Vermeer · c. 1665');
-  hang(g,'sunflowers',7,3.4,1.5,1.9,'Sunflowers','Vincent van Gogh · 1888');
-  hang(g,'lilies',-7,3.4,2.5,1.7,'Water Lilies','Claude Monet · 1906');
-  hang(g,'sunrise',-13.5,3.4,2.5,1.75,'Impression, Sunrise','Claude Monet · 1872');fixG(g)}
+  hang(g,'pearl',17.5,3.4,1.5,1.9,'Girl with a Pearl Earring','Johannes Vermeer · c. 1665');
+  hang(g,'sunflowers',21.2,3.4,1.5,1.9,'Sunflowers','Vincent van Gogh · 1888');
+  hang(g,'lilies',-17.5,3.4,2.5,1.7,'Water Lilies','Claude Monet · 1906');
+  hang(g,'sunrise',-21.2,3.4,2.5,1.75,'Impression, Sunrise','Claude Monet · 1872');fixG(g)}
 // baut emas
 const bolts=[];
 for(let n=0;n<12;n++){
@@ -1252,7 +1332,7 @@ const P=person({skin:0xf1c9a5,hair:0x4a2f1c,k:'player'});pl.add(P.g);
 pl.position.set(0,0,14.8);let moving=false;
 // input
 const K={};let tYaw=0,tPitch=.38,yaw=0,pitch=.38,vy=0,jx=0,jz=0,open=false,near=null,seated=null,nearSeat=null,sitAt=0,nearRec=false,nearP=null;
-addEventListener('keydown',e=>{if(auto.on&&/^(Key[WASD]|Arrow(Up|Down|Left|Right))$/.test(e.code))stopAuto();K[e.code]=true;if(e.code==='Space'&&!open)e.preventDefault();if(e.code==='KeyE')act();if(e.code==='KeyF'&&!e.repeat)toggleSit();if(e.code==='Escape'){stopAuto();closeAll()}});
+addEventListener('keydown',e=>{if(/^(INPUT|SELECT|TEXTAREA)$/.test((e.target&&e.target.tagName)||''))return;if(auto.on&&/^(Key[WASD]|Arrow(Up|Down|Left|Right))$/.test(e.code))stopAuto();K[e.code]=true;if(e.code==='Space'&&!open)e.preventDefault();if(e.code==='KeyE')act();if(e.code==='KeyF'&&!e.repeat)toggleSit();if(e.code==='Escape'){stopAuto();closeAll()}});
 addEventListener('keyup',e=>K[e.code]=false);
 let drag=false,lx=0,ly=0;const cv=$('#c');
 cv.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY});
@@ -1271,7 +1351,7 @@ const stamps=new Set();let got=0;
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>st.forEach(s=>drawLabel(s.lab,s.i,stamps.has(s.i))));
 function nextUnvisited(from){for(let d=1;d<=6;d++){const k=(from+d)%6;if(!stamps.has(k))return k}return -1}
 function toast(t,ms=2200){const e=$('#toast');e.textContent=t;e.style.opacity=1;clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.opacity=0,ms)}
-function act(){if(open||auto.on)return;if(!near){if(nearP)nearP.fn();return}openStation(near.i)}
+function act(){if(open||auto.on)return;if(near||nearP)Snd.chime();if(!near){if(nearP)nearP.fn();return}openStation(near.i)}
 function openStation(i,fromAuto){const p=PROJECTS[i];
  if(!stamps.has(i)){stamps.add(i);hideTrail();$('#stamp').textContent=`Diperiksa ${stamps.size}/6`;stBy[i].ring.material.color.set(0x1fa37a);drawLabel(stBy[i].lab,i,true);
   if(stamps.size===6)toast('Tur selesai! Klik Lihat Ringkasan CV 2D di bar atas untuk ringkasan lengkap.',3800)}
@@ -1284,7 +1364,7 @@ function openStation(i,fromAuto){const p=PROJECTS[i];
  else{nx.textContent='Selesai · Lolos QC →';nx.onclick=()=>{closeAll();showQC()}}
  if(fromAuto){nx.textContent=i<5?'Lanjut ke Perusahaan Berikutnya →':'Selesai · Lolos QC →';nx.onclick=()=>closeAll()}
  $('#panel').classList.add('on');open=true}
-function closeAll(){['panel','v2d','help','npc','parts','kpi','card','certs','mach','qc'].forEach(i=>$('#'+i).classList.remove('on'));partsOpen=false;open=$('#intro').classList.contains('on')}
+function closeAll(){['panel','v2d','help','npc','parts','kpi','card','certs','mach','sim','tlm','qc'].forEach(i=>$('#'+i).classList.remove('on'));partsOpen=false;open=$('#intro').classList.contains('on')||$('#gate').classList.contains('on')}
 
 // =====================================================================
 //  AUTOPILOT: tur otomatis kamera/karakter perusahaan 1 -> 6 (berhenti sampai tombol Lanjut diklik)
@@ -1295,7 +1375,7 @@ const wrapPI=a=>{while(a>Math.PI)a-=2*Math.PI;while(a<-Math.PI)a+=2*Math.PI;retu
 function setAutoHud(){$('#autohud').innerHTML=auto.phase==='dwell'?`🎬 Tur Otomatis · ${NAMES[auto.stop]} · klik “Lanjut ke Perusahaan Berikutnya” di pop-up`:`🎬 Menuju ${NAMES[auto.stop]} (${auto.stop+1}/6) · <u>WASD / ketuk untuk berhenti</u>`}
 function startAuto(){
   if(auto.on)return;
-  ['panel','v2d','help','npc','parts','kpi','card','certs','mach','qc','intro'].forEach(i=>$('#'+i).classList.remove('on'));partsOpen=false;open=false;
+  ['panel','v2d','help','npc','parts','kpi','card','certs','mach','sim','tlm','qc','intro'].forEach(i=>$('#'+i).classList.remove('on'));partsOpen=false;open=false;
   if(seated){seated=null;P.g.position.y=0}
   hideTrail();auto.on=true;auto.k=1;auto.stop=0;auto.phase='walk';document.body.classList.add('autop');
   if(Math.hypot(pl.position.x-ROUTE[0][0],pl.position.z-ROUTE[0][1])>2.5){
@@ -1341,13 +1421,14 @@ const PINFO={speedo:['Speedometer','Panel instrumen dengan dial kecepatan dan RP
 let R2=null,S2,cam2,PARTS3={},curPart='speedo',pRot=0,pDrag=false,pAuto=true,partsOpen=false;
 function initR2(){
   try{R2=new THREE.WebGLRenderer({canvas:$('#pc'),antialias:true,alpha:true})}catch(e){R2=null;$('#pc').style.display='none';return}
-  R2.setPixelRatio(Math.min(window.devicePixelRatio,2));S2=new THREE.Scene();
+  R2.setPixelRatio(Math.min(window.devicePixelRatio,2));S2=new THREE.Scene();PMENV=null;S2.environment=makeEnv(R2);
   S2.add(new THREE.HemisphereLight(0xffffff,0x7a86a8,.95));
   const d1=new THREE.DirectionalLight(0xffffff,.95);d1.position.set(3,5,5);S2.add(d1);
   const d2=new THREE.DirectionalLight(0x9bb4ff,.45);d2.position.set(-5,2,-3);S2.add(d2);
   cam2=new THREE.PerspectiveCamera(36,1,.1,50);cam2.position.set(0,.4,7);cam2.lookAt(0,0,0);
   ['speedo','interior','engine','exterior'].forEach(k=>{const m=normPart(buildPart(k),3.2,true),tilt=new THREE.Group(),spin=new THREE.Group();
     spin.add(m);tilt.add(spin);tilt.rotation.x=.22;tilt.userData.spin=spin;tilt.visible=false;S2.add(tilt);PARTS3[k]=tilt});
+  if(S2.environment)S2.traverse(o=>{const m=o.material;if(m&&m.isMeshStandardMaterial)m.envMapIntensity=.6});
   const c=$('#pc');let lx=0;
   c.addEventListener('pointerdown',e=>{pDrag=true;lx=e.clientX;c.setPointerCapture(e.pointerId);c.style.cursor='grabbing'});
   c.addEventListener('pointermove',e=>{if(pDrag){pRot+=(e.clientX-lx)*.012;lx=e.clientX}});
@@ -1439,7 +1520,7 @@ $('#mnext').onclick=()=>showMach(MKEYS[(MKEYS.indexOf(machK)+1)%3]);
 $('#partsx').onclick=$('#kpix').onclick=$('#cardx').onclick=closeAll;
 $('#npccard').onclick=()=>{closeAll();showCard()};
 
-function showRec(){stopAuto(false);$('#npcgo').textContent=target>=0?`Mulai dari ${NAMES[target]} →`:'📄 Lihat Ringkasan CV 2D';$('#npc').classList.add('on');open=true}
+function showRec(){stopAuto(false);greetRec();$('#npcgo').textContent=target>=0?`Mulai dari ${NAMES[target]} →`:'📄 Lihat Ringkasan CV 2D';$('#npc').classList.add('on');open=true}
 $('#npcx').onclick=closeAll;
 $('#npcgo').onclick=()=>{closeAll();if(target>=0){showTrail();toast(`Menuju ${NAMES[target]} — ikuti garis kuning di lantai`,3600)}else show2d()};
 $('#pclose').onclick=()=>{if(auto.on){stopAuto();return}closeAll();if(stamps.size===6&&!qcShown)setTimeout(showQC,350)};
@@ -1476,6 +1557,260 @@ clock();setInterval(clock,10000);
 // loop
 const camPos=new THREE.Vector3(0,5,18.2),lk=new THREE.Vector3(0,1.6,14.8),_tp=new THREE.Vector3(),_lt=new THREE.Vector3();
 const clk=new THREE.Clock();let wallF=1,lastNear=-2;
+// =====================================================================
+//  AUDIO — BGM lo-fi chillout + SFX (Web Audio API murni, tanpa file audio eksternal)
+//  Autoplay compliance: AudioContext baru dibuat/di-resume pada klik atau tombol pertama pengguna
+// =====================================================================
+const Snd=(()=>{
+ const BGM_VOL=.18,SFX_VOL=.55,BPM=72,EIGHTH=60/BPM/2;
+ let ctx=null,master,bgm,sfx,verb,keyBus,ana,noiseBuf,on=true,timer=0,nextT=0,idx=0,footT=0,footSide=1,lastChime=0;
+ try{on=localStorage.getItem('sndMuted')!=='1'}catch(e){}
+ const mtof=m=>440*Math.pow(2,(m-69)/12);
+ const CH=[[48,52,55,59,62],[45,52,55,59,60],[41,48,52,55,57],[43,50,53,57,60]];   // Cmaj9 · Am9 · Fmaj9 · G9sus
+ const ROOT=[36,33,29,31],PENT=[72,74,76,79,81,84,79,76];
+ function ui(){const b=document.getElementById('snd');if(!b)return;b.textContent=on?'🔊':'🔇';b.setAttribute('aria-pressed',String(!on));
+  const t=on?'Matikan musik (M)':'Nyalakan musik (M)';b.title=t;b.setAttribute('aria-label',t)}
+ function mkNoise(sec){const n=ctx.sampleRate*sec|0,b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;return b}
+ function mkImpulse(sec,decay){const n=ctx.sampleRate*sec|0,b=ctx.createBuffer(2,n,ctx.sampleRate);for(let c=0;c<2;c++){const d=b.getChannelData(c);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,decay)}return b}
+ function init(){
+  const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;
+  try{ctx=new AC()}catch(e){ctx=null;return false}
+  master=ctx.createGain();master.gain.value=on?1:0;ana=ctx.createAnalyser();ana.fftSize=512;master.connect(ctx.destination);master.connect(ana);
+  bgm=ctx.createGain();bgm.gain.value=BGM_VOL;bgm.connect(master);          // volume BGM halus (18%)
+  sfx=ctx.createGain();sfx.gain.value=SFX_VOL;sfx.connect(master);
+  verb=ctx.createConvolver();verb.buffer=mkImpulse(2.2,3);verb.connect(bgm);
+  // bus piano/rhodes: delay + filter bersama (satu feedback loop saja, tidak bocor)
+  keyBus=ctx.createGain();keyBus.gain.value=1;keyBus.connect(bgm);
+  const dl=ctx.createDelay(1.5);dl.delayTime.value=EIGHTH*3;const fb=ctx.createGain();fb.gain.value=.34;const lp=ctx.createBiquadFilter();
+  lp.type='lowpass';lp.frequency.value=1800;keyBus.connect(dl);dl.connect(lp);lp.connect(fb);fb.connect(dl);lp.connect(bgm);
+  const kv=ctx.createGain();kv.gain.value=.45;keyBus.connect(kv);kv.connect(verb);
+  noiseBuf=mkNoise(2);
+  // crackle vinyl sangat halus
+  const cb=ctx.createBuffer(1,ctx.sampleRate*4,ctx.sampleRate),cd=cb.getChannelData(0);
+  for(let i=0;i<cd.length;i++)cd[i]=Math.random()<.0005?(Math.random()*2-1)*.9:(Math.random()*2-1)*.004;
+  const cs=ctx.createBufferSource();cs.buffer=cb;cs.loop=true;const cf=ctx.createBiquadFilter();cf.type='highpass';cf.frequency.value=1200;
+  const cg=ctx.createGain();cg.gain.value=.3;cs.connect(cf);cf.connect(cg);cg.connect(bgm);cs.start();
+  return true}
+ const env=(g,t,a,pk,hold,rel)=>{g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(pk,t+a);g.gain.setValueAtTime(pk,t+a+hold);g.gain.exponentialRampToValueAtTime(.0001,t+a+hold+rel)};
+ function nz(t,type,f,q,pk,dur,dest){const s=ctx.createBufferSource();s.buffer=noiseBuf;const fl=ctx.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q;
+  const g=ctx.createGain();g.gain.setValueAtTime(pk,t);g.gain.exponentialRampToValueAtTime(.0005,t+dur);s.connect(fl);fl.connect(g);g.connect(dest||bgm);s.start(t,Math.random()*1.5);s.stop(t+dur+.05)}
+ function pad(t,ch,dur){const lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1000;lp.Q.value=.3;const g=ctx.createGain();lp.connect(g);g.connect(bgm);
+  const s=ctx.createGain();s.gain.value=.5;g.connect(s);s.connect(verb);env(g,t,1.8,1,dur-2,2.4);
+  ch.forEach((m,i)=>[0,7].forEach(d=>{const o=ctx.createOscillator(),og=ctx.createGain();o.type=i%2?'triangle':'sine';o.frequency.value=mtof(m);o.detune.value=d-3.5;og.gain.value=.055;o.connect(og);og.connect(lp);o.start(t);o.stop(t+dur+2.6)}))}
+ function bass(t,m,len){const o=ctx.createOscillator(),g=ctx.createGain(),lp=ctx.createBiquadFilter();o.type='sine';o.frequency.value=mtof(m);lp.type='lowpass';lp.frequency.value=420;
+  o.connect(lp);lp.connect(g);g.connect(bgm);env(g,t,.03,.34,len*.4,len*.6);o.start(t);o.stop(t+len+.1)}
+ function kick(t,v){const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(42,t+.18);
+  g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+.26);o.connect(g);g.connect(bgm);o.start(t);o.stop(t+.3)}
+ function key(t,m,v){const g=ctx.createGain(),o1=ctx.createOscillator(),o2=ctx.createOscillator(),g2=ctx.createGain();o1.type='sine';o2.type='triangle';
+  o1.frequency.value=mtof(m);o2.frequency.value=mtof(m)*2;g2.gain.value=.22;o1.connect(g);o2.connect(g2);g2.connect(g);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.012);g.gain.exponentialRampToValueAtTime(.0005,t+1.7);g.connect(keyBus);o1.start(t);o2.start(t);o1.stop(t+1.8);o2.stop(t+1.8)}
+ function sched(){if(!ctx||ctx.state!=='running')return;const now=ctx.currentTime;if(nextT<now)nextT=now+.1;
+  while(nextT<now+.7){const e=idx%16,ci=Math.floor(idx/16)%4,t=nextT+(e%2?EIGHTH*.14:0);
+   if(e===0)pad(t,CH[ci],EIGHTH*16+.4);
+   if(e===0)bass(t,ROOT[ci],1.7);if(e===8)bass(t,ROOT[ci]+7,1.2);if(e===12)bass(t,ROOT[ci]+12,.7);
+   if(e===0||e===8)kick(t,.34);if(e===3||e===11)kick(t,.16);
+   if(e===2||e===6||e===10||e===14)nz(t,'bandpass',1800,.8,.09,.13);
+   nz(t,'highpass',7000,.7,e%2?.032:.018,.04);
+   if([0,3,6,8,10,13].includes(e)&&Math.random()<.5)key(t,Math.random()<.4?CH[ci][1+Math.floor(Math.random()*4)]+12:PENT[Math.floor(Math.random()*PENT.length)],.06+Math.random()*.03);
+   idx++;nextT+=EIGHTH}}
+ function start(){if(!ctx&&!init())return false;if(ctx.state==='suspended')ctx.resume();
+  if(!timer){nextT=ctx.currentTime+.15;timer=setInterval(sched,120)}return true}
+ function toggle(){on=!on;try{localStorage.setItem('sndMuted',on?'0':'1')}catch(e){}ui();
+  if(ctx){master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(on?1:0,ctx.currentTime,.12);if(on&&ctx.state==='suspended')ctx.resume()}else if(on)start()}
+ const can=()=>ctx&&on&&ctx.state==='running';
+ function step(){if(!can())return;const t=ctx.currentTime;footSide*=-1;
+  const pan=ctx.createStereoPanner?ctx.createStereoPanner():null;if(pan){pan.pan.value=footSide*.18;pan.connect(sfx)}const d=pan||sfx;
+  nz(t,'bandpass',850+Math.random()*260,1.1,.30,.07,d);nz(t,'highpass',3200,.7,.07,.02,d);          // tumit + klik granit
+  const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(120,t);o.frequency.exponentialRampToValueAtTime(55,t+.07);
+  g.gain.setValueAtTime(.16,t);g.gain.exponentialRampToValueAtTime(.001,t+.09);o.connect(g);g.connect(d);o.start(t);o.stop(t+.1)}
+ function foot(dt,mv){if(!mv){footT=0;return}footT-=dt;if(footT<=0){step();footT=.286}}
+ function chime(){if(!can())return;const n=performance.now();if(n-lastChime<250)return;lastChime=n;const t=ctx.currentTime;
+  [[1046.5,0],[1568,.09]].forEach(q=>[1,2.01,3.02].forEach((h,i)=>{const o=ctx.createOscillator(),g=ctx.createGain(),s=ctx.createGain();o.type='sine';o.frequency.value=q[0]*h;
+   const pk=[.22,.07,.03][i],t0=t+q[1];g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(pk,t0+.01);g.gain.exponentialRampToValueAtTime(.0003,t0+1.3/(1+i*.5));
+   o.connect(g);g.connect(sfx);s.gain.value=.3;g.connect(s);s.connect(verb);o.start(t0);o.stop(t0+1.5)}))}
+ function blip(f0,f1,pk,dur){if(!can())return;const t=ctx.currentTime,o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(f0,t);o.frequency.exponentialRampToValueAtTime(f1,t+dur);
+  g.gain.setValueAtTime(pk,t);g.gain.exponentialRampToValueAtTime(.001,t+dur+.02);o.connect(g);g.connect(sfx);o.start(t);o.stop(t+dur+.05)}
+ const pop=()=>blip(560,250,.2,.07),hover=()=>blip(900,700,.06,.035);
+ const level=()=>{if(!ana)return 0;const d=new Float32Array(ana.fftSize);ana.getFloatTimeDomainData(d);let s=0;for(const v of d)s+=v*v;return Math.sqrt(s/d.length)};
+ document.addEventListener('visibilitychange',()=>{if(!ctx)return;if(document.hidden)ctx.suspend();else if(on)ctx.resume()});
+ ui();
+ return{start,toggle,foot,step,chime,pop,hover,level,ready:()=>!!ctx&&ctx.state==='running',isOn:()=>on,state:()=>ctx?ctx.state:'none'}})();
+// buka kunci audio pada interaksi pertama (klik / sentuh / tombol navigasi)
+(()=>{const ev=['pointerdown','keydown','touchstart'],un=()=>{Snd.start();if(Snd.ready())ev.forEach(e=>removeEventListener(e,un))};ev.forEach(e=>addEventListener(e,un,{passive:true}))})();
+$('#snd').onclick=()=>Snd.toggle();
+addEventListener('keydown',e=>{if(/^(INPUT|SELECT|TEXTAREA)$/.test((e.target&&e.target.tagName)||''))return;if(e.code==='KeyM'&&!e.repeat&&!e.ctrlKey&&!e.metaKey)Snd.toggle()});
+// SFX tombol UI: pop mikro saat kursor melewati / mengklik tombol
+{const SEL='button,a.btn,#nav a,.tabb,#prompt,#sitp';
+ document.addEventListener('pointerover',e=>{if(e.pointerType==='touch')return;const b=e.target.closest&&e.target.closest(SEL);if(b&&!b.contains(e.relatedTarget)&&!b.disabled)Snd.hover()});
+ document.addEventListener('pointerdown',e=>{const b=e.target.closest&&e.target.closest(SEL);if(b)Snd.pop()})}
+// chime elegan setiap kali modal/panel terbuka
+{const mo=new MutationObserver(ms=>ms.forEach(m=>{const el=m.target;if(el.id!=='intro'&&el.classList.contains('on')&&!(m.oldValue||'').split(' ').includes('on'))Snd.chime()}));
+ document.querySelectorAll('.ov').forEach(o=>mo.observe(o,{attributes:true,attributeFilter:['class'],attributeOldValue:true}))}
+
+// =====================================================================
+//  MODUL 1 — PROJECT COST & RFQ SIMULATOR (kiosk 3D + modal kalkulator)
+// =====================================================================
+const SIM={part:'speedo',proc:'inj',vol:50000};
+const SPARTS=[['speedo','Speedometer'],['pcb','PCB Housing'],['trim','Car Interior Trim'],['bezel','Head Lamp Bezel']];
+const SPROCS=[['inj','Plastic Injection (30T-1600T)'],['stp','Metal Stamping'],['smt','SMT Assembly']];
+const SVOLS=[[10000,'10,000 unit'],[50000,'50,000 unit'],[100000,'100,000+ unit']];
+const TONS=[30,50,80,130,180,250,350,450,650,850,1100,1600],PRESS=[60,80,110,160,200,300,400];
+const SPI={
+ speedo:{c:3,inj:350,stp:110,resin:'PC/ABS grade tahan panas',coil:'SPCC 0.8 mm',smt:'PCB cluster speedometer'},
+ pcb:{c:2,inj:180,stp:80,resin:'PBT-GF30 flame retardant (UL94 V-0)',coil:'SECC 0.6 mm',smt:'PCB kontrol di dalam housing'},
+ trim:{c:2,inj:650,stp:160,resin:'PP-Talc / PC/ABS',coil:'SPCC 1.0 mm',smt:'modul switch / lampu ambient'},
+ bezel:{c:3,inj:450,stp:200,resin:'PC/PMMA tahan panas',coil:'SECC 1.0 mm',smt:'PCB LED di dalam lampu'}};
+const SFIT={
+ speedo:{inj:['ok','Housing & lensa speedometer umumnya dibuat dengan injection.'],stp:['ok','Cocok untuk bracket dan terminal pada cluster instrumen.'],smt:['ok','Perakitan PCB cluster speedometer.']},
+ pcb:{inj:['ok','Housing PCB (PBT/PA berpenguat serat kaca) cocok untuk injection.'],stp:['warn','Stamping hanya untuk komponen logam pendukung (shield / terminal).'],smt:['ok','Perakitan komponen PCB di dalam housing.']},
+ trim:{inj:['ok','Trim interior adalah aplikasi utama plastic injection.'],stp:['warn','Stamping hanya untuk insert / bracket logam pada trim.'],smt:['warn','Trim jarang memerlukan SMT, kecuali modul switch atau lampu ambient.']},
+ bezel:{inj:['ok','Bezel lampu: injection dengan kualitas permukaan tinggi.'],stp:['warn','Stamping hanya untuk bracket / reflektor logam.'],smt:['warn','SMT hanya untuk PCB LED di dalam lampu.']}};
+function simCalc(){
+ const P=SPI[SIM.part],pr=SIM.proc,vi=SVOLS.findIndex(v=>v[0]===SIM.vol),hi=P.c>=3;
+ const clampI=(a,i)=>Math.max(0,Math.min(a.length-1,i));
+ const r={};
+ const rb={inj:[2,3],stp:[3,4],smt:[3,5]}[pr],ra=hi?1:0;
+ r.rfq=`${rb[0]+ra} - ${rb[1]+ra} Hari Kerja`;
+ r.rfqN={inj:'Review gambar, DFM awal, dan kalkulasi cycle time.',stp:'Review strip layout, DFM awal, dan estimasi biaya die.',smt:'Review BOM, ketersediaan komponen, dan estimasi biaya perakitan.'}[pr];
+ if(pr==='smt'){const a=3+(vi===2?1:0)+(hi?1:0);r.tool=`${a} - ${a+2} Minggu`;r.toolL='Stencil, Fixture & Line Setup Timeline';r.toolN='Termasuk stencil, jig/fixture, program pick & place, dan profil reflow.'}
+ else{const a=12+(P.c-3)*2+(vi===2?2:0);r.tool=`${a} - ${a+4} Minggu`;
+  if(pr==='inj'){r.toolL='Mold / Tooling Development Timeline';r.toolN=vi===2?'Mold multi-cavity dengan hot runner untuk volume tinggi (baja keras).':vi===1?'Mold 2 cavity dengan sistem runner standar.':'Mold single cavity / family mold untuk volume rendah.'}
+  else{r.toolL='Progressive Die Development Timeline';r.toolN=vi===2?'Progressive die berumur panjang (material die premium) untuk volume tinggi.':'Progressive die standar dengan sensor misfeed dasar.'}}
+ const v=[[8,10,12],[6,8,10],[5,7,9]][['inj','stp','smt'].indexOf(pr)][vi];
+ r.vave={inj:`Optimasi ketebalan dinding & pemangkasan cycle time hingga ${v}%`,stp:`Optimasi nesting strip & pengurangan scrap material hingga ${v}%`,smt:`Panelisasi PCB & standarisasi komponen (BOM) hingga ${v}%`}[pr];
+ r.vaveN={inj:'Dibahas bersama customer sebelum tooling dilepas.',stp:'Dibahas bersama customer pada fase strip layout.',smt:'Dibahas bersama customer pada fase review BOM.'}[pr];
+ if(pr==='inj'){const t=TONS[clampI(TONS,TONS.indexOf(P.inj)+vi-1)];r.mach=`Membutuhkan Mesin Injection ${t}T + Material Resin Engineering Class (${P.resin})`;r.machN=['Single cavity','2 cavity','4+ cavity & hot runner'][vi]+' · tersedia 30T - 1600T.'}
+ else if(pr==='stp'){const t=PRESS[clampI(PRESS,PRESS.indexOf(P.stp)+vi-1)];r.mach=`Membutuhkan Press ${t}T + Progressive Die + Coil ${P.coil}`;r.machN=['Feeder standar','Servo feeder','Kecepatan tinggi + auto stacking'][vi]+'.'}
+ else{r.mach=['Membutuhkan 1 Line SMT (pick & place kecepatan menengah) + Reflow + AOI','Membutuhkan 1 Line SMT high-speed + SPI + Reflow + AOI','Membutuhkan 2 Line SMT high-speed + SPI + Reflow + AOI + Traceability'][vi];r.machN=`Untuk ${P.smt}.`}
+ r.fit=SFIT[SIM.part][pr];return r}
+function simSeg(id,list,cur,key){$(id).innerHTML=list.map(q=>`<button class="tabb${q[0]===cur?'':' alt'}" role="radio" aria-checked="${q[0]===cur}" data-v="${q[0]}">${q[1]}</button>`).join('')}
+function renderSim(){
+ simSeg('#sgPart',SPARTS,SIM.part);simSeg('#sgProc',SPROCS,SIM.proc);simSeg('#sgVol',SVOLS,SIM.vol);
+ const r=simCalc();
+ $('#simout').innerHTML=
+  `<div class="rcard k1"><span class="rk">Estimated RFQ Lead Time</span><b>${r.rfq}</b><small>${r.rfqN}</small></div>`+
+  `<div class="rcard k2"><span class="rk">${r.toolL}</span><b>${r.tool}</b><small>${r.toolN}</small></div>`+
+  `<div class="rcard k3"><span class="rk">VAVE Cost Reduction Proposal</span><b>${r.vave}</b><small>${r.vaveN}</small></div>`+
+  `<div class="rcard k4"><span class="rk">Rekomendasi Spesifikasi Mesin</span><b>${r.mach}</b><small>${r.machN}</small></div>`;
+ const f=$('#simfit');f.className='simnote'+(r.fit[0]==='warn'?' warn':'');f.textContent=(r.fit[0]==='warn'?'⚠️ Kombinasi tidak lazim — ':'✅ Kombinasi sesuai — ')+r.fit[1]}
+[['#sgPart','part',v=>v],['#sgProc','proc',v=>v],['#sgVol','vol',v=>+v]].forEach(q=>$(q[0]).addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;SIM[q[1]]=q[2](b.dataset.v);renderSim()}));
+function showSim(){stopAuto(false);renderSim();$('#sim .box').scrollTop=0;$('#sim').classList.add('on');open=true}
+$('#simx').onclick=closeAll;
+$('#simreset').onclick=()=>{SIM.part='speedo';SIM.proc='inj';SIM.vol=50000;renderSim()};
+{ // kiosk 3D di sisi kiri (dekat meja 1 & 2), menghadap ke tengah ruangan
+ const KX=-14.6,KZ=-2.5,g=new THREE.Group();g.position.set(KX,0,KZ);g.rotation.y=Math.PI/2;S.add(g);
+ const A=(geo,mat,x,y,z,p=g)=>add(geo,mat,x,y,z,p),navy=M(0x14213d,.6),gold=M(0xc9a227,.5);
+ A(new THREE.BoxGeometry(1.8,.12,1.2),drk,0,.06,0);A(new THREE.BoxGeometry(1.4,.95,.75),navy,0,.6,0);A(new THREE.BoxGeometry(1.46,.07,.81),gold,0,1.1,0);
+ const led=new THREE.Mesh(new THREE.BoxGeometry(1.2,.05,.03),new THREE.MeshBasicMaterial({color:0x2bd4a8}));led.position.set(0,.55,.39);g.add(led);
+ A(new THREE.CylinderGeometry(.06,.06,.45,10),drk,0,1.38,-.1);
+ const tilt=new THREE.Group();tilt.position.set(0,1.78,-.05);tilt.rotation.x=-.42;g.add(tilt);
+ A(new THREE.BoxGeometry(1.58,1.04,.07),M(0x0b0e14,.5),0,0,0,tilt);
+ const sc=new THREE.Mesh(new THREE.PlaneGeometry(1.46,.92),tex(584,368,(x,w,h)=>{
+  let gr=x.createLinearGradient(0,0,w,h);gr.addColorStop(0,'#0f1d44');gr.addColorStop(1,'#1b2f7a');x.fillStyle=gr;x.fillRect(0,0,w,h);x.fillStyle='#2bd4a8';x.fillRect(0,0,w,12);
+  x.fillStyle='#fff';x.textAlign='left';x.textBaseline='middle';x.font='800 34px Archivo, sans-serif';x.fillText('PROJECT COST & RFQ',28,56);x.fillStyle='#9fb0e0';x.font='700 24px Archivo, sans-serif';x.fillText('SIMULATOR',28,92);
+  [['Part Type','Speedometer'],['Process','Plastic Injection'],['Volume','50,000 unit']].forEach((q,i)=>{const y=122+i*58;rrect(x,28,y,w-56,46,12);x.fillStyle='rgba(255,255,255,.1)';x.fill();
+   x.fillStyle='#9fb0e0';x.font='700 18px Archivo, sans-serif';x.fillText(q[0],44,y+24);x.fillStyle='#fff';x.textAlign='right';x.font='800 22px Archivo, sans-serif';x.fillText(q[1],w-44,y+24);x.textAlign='left'});
+  x.fillStyle='#f2b705';x.font='800 24px Archivo, sans-serif';x.fillText('▶ Tekan E untuk menghitung',28,h-28)}));
+ sc.position.set(0,0,.041);tilt.add(sc);
+ boxes.push({x:KX,z:KZ,hx:.7,hz:1});
+ poiLabel('💰 RFQ SIMULATOR','E - Project Cost & RFQ Simulator',0x2bd4a8,KX,3.2,KZ,.85);
+ poiRing(KX+2,KZ,0x2bd4a8);
+ POIS.push({k:'sim',x:KX+2,z:KZ,r:2.8,txt:'E - Project Cost & RFQ Simulator',fn:()=>showSim()})}
+
+// =====================================================================
+//  MODUL 2 — "RFQ TO MASSPRO" TIMELINE WALL 3D (dinding depan, garis neon + 5 titik fase interaktif)
+// =====================================================================
+const TLN=[
+ {t:'RFQ & Feasibility Study',s:'RFQ & Feasibility',c:'#2b9dff',n:0x2b9dff,
+  say:'Fase ini menentukan arah proyek: RFQ dibaca dengan benar, feasibility terjawab, dan kuotasi yang kompetitif sampai ke customer tepat waktu.',
+  pts:['<b>Review RFQ & gambar</b> bersama Engineering, Tooling, dan Produksi untuk memetakan risiko sejak awal.','<b>Negosiasi kuotasi harga:</b> menyusun cost breakdown (material, proses, tooling, logistik) yang transparan dan kompetitif.','<b>Penyiapan VAVE awal:</b> usulan ketebalan dinding, pilihan resin, dan cycle time sebagai nilai tambah pada kuotasi.','<b>Ketepatan waktu:</b> memastikan kuotasi dan feasibility report terkirim sesuai deadline customer.'],
+  tags:['Quotation','Feasibility','Cost Breakdown','VAVE Proposal']},
+ {t:'Mold/Tooling Design & Simulation',s:'Mold/Tooling Design',c:'#8b5dff',n:0x8b5dff,
+  say:'Setelah PO/nominasi, tugas saya menjaga desain mold tetap sejalan dengan kebutuhan customer, jadwal, dan biaya yang sudah disepakati.',
+  pts:['<b>Koordinasi tim tooling & customer</b> untuk finalisasi desain part dan mold (DFM).','<b>Simulasi & review desain:</b> memantau hasil simulasi pengisian dan memastikan temuan dikomunikasikan ke customer.','<b>Kontrol jadwal tooling:</b> memantau milestone pembuatan mold dan memberi kabar lebih awal bila ada risiko keterlambatan.','<b>Engineering change:</b> menilai dampak perubahan terhadap biaya dan jadwal, lalu menyepakatinya dengan customer.'],
+  tags:['DFM','Mold Flow','Tooling Schedule','Engineering Change']},
+ {t:'Trial, Samplings & CMM Inspection',s:'Trial & Sampling',c:'#ff9f2b',n:0xff9f2b,
+  say:'Di tahap trial, saya memastikan sample yang dikirim benar-benar sesuai spesifikasi dan setiap temuan segera ditindaklanjuti.',
+  pts:['<b>Penjadwalan trial:</b> koordinasi mesin, material, dan tim produksi untuk trial mold.','<b>Sampling & CMM:</b> mengawal hasil pengukuran terhadap gambar dan spesifikasi sebelum sample dikirim.','<b>Respon feedback customer:</b> mengubah catatan customer menjadi tindakan korektif yang jelas dan terjadwal.','<b>Komunikasi progres</b> rutin supaya customer selalu tahu status sample dan langkah berikutnya.'],
+  tags:['Trial Mold','Sample Submission','CMM','Corrective Action']},
+ {t:'Pilot Run & Customer Sign-Off',s:'Pilot Run & Sign-Off',c:'#2bd4a8',n:0x2bd4a8,
+  say:'Pilot run adalah pembuktian kesiapan produksi. Saya memastikan semua syarat teknis dan komersial terpenuhi sebelum customer menyetujui.',
+  pts:['<b>Kesiapan pilot run:</b> koordinasi kapasitas, packaging, dan labeling dengan Produksi dan QA.','<b>Dokumen persetujuan:</b> mengawal kelengkapan dokumen sesuai persyaratan customer (PPAP/APQP bila diminta).','<b>Kesepakatan komersial:</b> konfirmasi harga final, syarat delivery, dan jadwal pengiriman awal.','<b>Sign-off:</b> memastikan persetujuan tertulis dari customer sebelum masuk mass production.'],
+  tags:['Pilot Run','PPAP / APQP','Price Agreement','Sign-Off']},
+ {t:'Mass Production & Ramp-Up',s:'Mass Production',c:'#ff5a7a',n:0xff5a7a,
+  say:'Setelah masspro berjalan, fokus saya adalah menjaga pasokan, kualitas, dan hubungan jangka panjang dengan key account.',
+  pts:['<b>Jaminan stok & delivery:</b> menyelaraskan forecast customer, safety stock, dan pasokan material bersama supplier.','<b>Pemantauan ramp-up:</b> kapasitas, kualitas, dan on-time delivery pada masa awal produksi massal.','<b>VAVE berkelanjutan & harga periodik:</b> mencari penghematan bersama dan menegosiasikan penyesuaian harga secara adil.','<b>Key account management:</b> review rutin dan penanganan keluhan sampai tuntas.'],
+  tags:['Delivery','Safety Stock','Ramp-Up','Key Account']}];
+const tlSeen=new Set(),TLG={nodes:[],bead:null,glow:null};
+{const g=wallG(0,0,18.6,Math.PI),PW=28,PH=3.2,PX=80,CY=4.3;   // PX = piksel per unit; grup berputar 180°, +x lokal = kanan pemain
+ const nodeX=i=>-12+6*i;
+ const bg=tex(PW*PX,PH*PX,(x,w,h)=>{
+  let gr=x.createLinearGradient(0,0,0,h);gr.addColorStop(0,'#0a1129');gr.addColorStop(1,'#15214a');x.fillStyle=gr;x.fillRect(0,0,w,h);
+  x.strokeStyle='rgba(120,160,255,.07)';x.lineWidth=1;for(let i=0;i<w;i+=40){x.beginPath();x.moveTo(i,0);x.lineTo(i,h);x.stroke()}for(let j=0;j<h;j+=40){x.beginPath();x.moveTo(0,j);x.lineTo(w,j);x.stroke()}
+  x.strokeStyle='#2b4fe0';x.lineWidth=6;x.strokeRect(3,3,w-6,h-6);
+  x.fillStyle='#fff';x.textAlign='left';x.textBaseline='middle';x.font='800 40px Archivo, sans-serif';x.fillText('RFQ → MASSPRO',34,42);
+  x.fillStyle='#8fa4e8';x.font='700 24px Archivo, sans-serif';x.fillText('Alur proyek dari permintaan kuotasi sampai produksi massal · dekati titik fase & tekan E',34,84);
+  const yL=(PH/2-.15)*PX;   // posisi garis neon (px dari atas panel)
+  const lg=x.createLinearGradient(nodeX(0)*PX+w/2,0,nodeX(4)*PX+w/2,0);TLN.forEach((n,i)=>lg.addColorStop(i/4,n.c));
+  x.lineCap='round';
+  [[22,.18],[12,.35],[5,1]].forEach(q=>{x.strokeStyle=lg;x.globalAlpha=q[1];x.lineWidth=q[0];x.shadowColor='#6fb5ff';x.shadowBlur=q[0]===5?18:0;x.beginPath();x.moveTo(nodeX(0)*PX+w/2,yL);x.lineTo(nodeX(4)*PX+w/2,yL);x.stroke()});
+  x.globalAlpha=1;x.shadowBlur=0;
+  TLN.forEach((n,i)=>{const cx=nodeX(i)*PX+w/2;x.textAlign='center';x.fillStyle=n.c;x.font='800 22px Archivo, sans-serif';x.fillText('FASE '+(i+1),cx,yL+82);
+   x.fillStyle='#fff';x.font='800 27px Archivo, sans-serif';let tt=n.s,z=27;while(x.measureText(tt).width>PX*5.4&&z>16){z-=1;x.font='800 '+z+'px Archivo, sans-serif'}x.fillText(tt,cx,yL+114)})});
+ const panel=new THREE.Mesh(new THREE.PlaneGeometry(PW,PH),bg);panel.position.set(0,CY,.07);g.add(panel);
+ const back=new THREE.Mesh(new THREE.BoxGeometry(PW+.3,PH+.3,.06),new THREE.MeshBasicMaterial({color:0x0b0e14}));back.position.set(0,CY,.02);g.add(back);
+ const LY=CY+.15;
+ // node 3D: cakram berangka + cincin glow yang berdenyut
+ const glowT=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d'),r=x.createRadialGradient(64,64,0,64,64,64);r.addColorStop(0,'rgba(255,255,255,1)');r.addColorStop(.35,'rgba(160,210,255,.55)');r.addColorStop(1,'rgba(120,180,255,0)');x.fillStyle=r;x.fillRect(0,0,128,128);return new THREE.CanvasTexture(c)})();
+ TLN.forEach((n,i)=>{
+  const grp=new THREE.Group();grp.position.set(nodeX(i),LY,.1);g.add(grp);
+  const halo=new THREE.Mesh(new THREE.PlaneGeometry(1.9,1.9),new THREE.MeshBasicMaterial({map:glowT,color:n.n,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,opacity:.8}));halo.position.z=-.01;grp.add(halo);
+  const ring=new THREE.Mesh(new THREE.RingGeometry(.5,.58,40),new THREE.MeshBasicMaterial({color:n.n,transparent:true,depthWrite:false,side:THREE.DoubleSide}));grp.add(ring);
+  const disc=new THREE.Mesh(new THREE.CircleGeometry(.46,40),new THREE.MeshBasicMaterial({color:0x0a1129}));disc.position.z=.005;grp.add(disc);
+  const num=new THREE.Mesh(new THREE.PlaneGeometry(.8,.8),tex(128,128,(x,w,h)=>{x.fillStyle='#fff';x.textAlign='center';x.textBaseline='middle';x.font='800 78px Archivo, sans-serif';x.fillText(String(i+1),w/2,h/2+4)}));
+  num.material.transparent=true;num.position.z=.012;grp.add(num);
+  TLG.nodes.push({grp,ring,halo,n,seen:false})});
+ // manik cahaya yang berjalan di sepanjang garis neon
+ const bead=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1),new THREE.MeshBasicMaterial({map:glowT,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));bead.position.set(nodeX(0),LY,.12);g.add(bead);TLG.bead=bead;TLG.nx=nodeX;
+ TLN.forEach((n,i)=>{const wx=12-6*i;poiRing(wx,16.6,n.n);POIS.push({k:'tl'+i,x:wx,z:16.7,r:3,txt:`Fase ${i+1} · ${n.s} (E)`,fn:()=>showTL(i)})})}
+function tlAnim(t){
+ TLG.nodes.forEach((q,i)=>{const p=1+Math.sin(t*2.4+i*.9)*.09;q.ring.scale.setScalar(p);q.halo.material.opacity=.55+Math.sin(t*2.4+i*.9)*.2+(q.seen?.0:.2)});
+ if(TLG.bead){const u=(t*.22)%1;TLG.bead.position.x=TLG.nx(0)+u*24;TLG.bead.material.opacity=Math.sin(u*Math.PI)*.95+.05}}
+let tlCur=0;
+function showTL(i){stopAuto(false);tlCur=i;const n=TLN[i];tlSeen.add(i);
+ const q=TLG.nodes[i];q.seen=true;q.ring.material.color.set(0x2bd47a);q.halo.material.color.set(0x2bd47a);
+ $('#tstep').innerHTML=`<span class="badge">Fase ${i+1} / 5</span><span class="dots">${TLN.map((_,k)=>`<i class="${k===i?'cur':tlSeen.has(k)?'on':''}"></i>`).join('')}</span>`;
+ $('#ttitle').textContent=`${i+1}. ${n.t}`;$('#tsay').textContent=n.say;$('#tpts').innerHTML=n.pts.map(x=>`<li>${x}</li>`).join('');
+ $('#ttags').innerHTML=n.tags.map(x=>`<span class="tag">${x}</span>`).join('');
+ $('#tprev').style.display=i===0?'none':'';const nx=$('#tnext');nx.textContent=i===4?'Selesai ✓':'Fase Berikutnya →';
+ $('#tlm .box').scrollTop=0;$('#tlm').classList.add('on');open=true}
+$('#tprev').onclick=()=>showTL(Math.max(0,tlCur-1));
+$('#tnext').onclick=()=>{if(tlCur>=4)closeAll();else showTL(tlCur+1)};
+$('#tclose').onclick=closeAll;
+
+// =====================================================================
+//  MODUL 4 — POLESAN VISUAL: soft contact shadow + pantulan specular/roughness
+// =====================================================================
+// 1) contact shadow lembut di bawah meja, mesin manufaktur, sofa, dan furnitur lain (dari footprint tabrakan)
+(()=>{const cache={};
+ function shadowMat(rx,rz){const k=rx.toFixed(2)+'|'+rz.toFixed(2);if(cache[k])return cache[k];
+  const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d');
+  const iw=128*rx,ih=128*rz,ox=(128-iw)/2,oy=(128-ih)/2;
+  x.shadowColor='rgba(14,20,48,.46)';x.shadowBlur=17;x.shadowOffsetX=400;x.shadowOffsetY=0;x.fillStyle='#000';
+  x.fillRect(ox-400,oy,iw,ih);x.fillRect(ox-400,oy,iw,ih);   // dua lapis agar inti lebih pekat
+  const t=new THREE.CanvasTexture(c);
+  return cache[k]=new THREE.MeshBasicMaterial({map:t,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2})}
+ const PAD=.8;
+ boxes.forEach(b=>{const hx=(b.hx||2.5)*.82,hz=(b.hz||2.3)*.82,w=2*hx+2*PAD,d=2*hz+2*PAD;
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(w,d),shadowMat(2*hx/w,2*hz/d));
+  m.rotation.x=-Math.PI/2;m.position.set(b.x,.05,b.z);m.renderOrder=1;m.castShadow=m.receiveShadow=false;m.matrixAutoUpdate=false;m.updateMatrix();S.add(m)})})();
+// 2) pantulan: lantai granit, meja kaca/kayu, mesin, dan part otomotif memakai env-map + roughness lebih rendah
+if(ENV){
+ S.traverse(o=>{const m=o.material;if(!m||!m.isMeshStandardMaterial||m.envMap)return;
+  if(m.roughness<=.62){m.envMap=ENV;m.envMapIntensity=m.metalness>.1?1:(m.transparent?1:.4);m.needsUpdate=true}});
+ [[fl.material,.5,.1],[wood,.4,.35]].forEach(q=>{q[0].roughness=q[1];q[0].envMap=ENV;q[0].envMapIntensity=q[2];q[0].needsUpdate=true});
+ acr.envMap=ENV;acr.envMapIntensity=1;acr.needsUpdate=true}
+
 function loop(){
   requestAnimationFrame(loop);const dt=Math.min(clk.getDelta(),.05),t=clk.elapsedTime;
   const sm=1-Math.exp(-dt*(auto.on?2.6:10));yaw+=(tYaw-yaw)*sm;pitch+=(tPitch-pitch)*sm;
@@ -1515,11 +1850,75 @@ function loop(){
    if((cz-WZ)*(p.z-WZ)<0){const tt=(cz-WZ)/(cz-p.z),xa=cx+(p.x-cx)*tt;occ=Math.abs(xa)<8.4}
    wallF+=((occ?.12:1)-wallF)*Math.min(1,dt*8);FM.forEach(m=>m.opacity=m.userData.o*wallF)}
   showParts3.forEach((q,i)=>q.rotation.y=t*.6+i*1.1);
-  poiLabs.forEach((q,i)=>{q.grp.rotation.y=t*.55+i*1.3;q.grp.position.y=q.by+Math.sin(t*1.6+i)*.1});mfgBadges(t,pl.position,dt);
+  poiLabs.forEach((q,i)=>{q.grp.rotation.y=t*.55+i*1.3;q.grp.position.y=q.by+Math.sin(t*1.6+i)*.1});mfgBadges(t,pl.position,dt);tlAnim(t);Snd.foot(dt,!!moving&&pl.position.y<.06&&!seated&&!open);
   if(partsOpen&&R2){const sp=PARTS3[curPart].userData.spin;if(pAuto&&!pDrag)pRot+=dt*.9;sp.rotation.y=pRot;R2.render(S2,cam2)}
   R.render(S,cam);
 }
 loop();
+
+// =====================================================================
+//  DIGITAL VISITOR LOG / GATEWAY FORM  +  INTEGRASI GOOGLE SHEETS
+//  1) Tempel URL Web App Google Apps Script Anda di WEBHOOK_URL di bawah.
+//  2) Data tamu (nama & perusahaan) disimpan di localStorage -> refresh tidak perlu isi ulang.
+// =====================================================================
+const WEBHOOK_URL="https://script.google.com/macros/s/AKfycbyu_FOV8tdt7sKkqlm_o9a5hgknK-itYhtgt1eX-jlTfrdaBvd7b7il4CGXjZ8bex8/exec";
+const GUEST_KEY='dedeVisitorV1';
+let guest=null;
+const REC_DEFAULT=$('#npc .say').textContent;
+
+function loadGuest(){try{const g=JSON.parse(localStorage.getItem(GUEST_KEY)||'null');if(g&&g.nama&&g.perusahaan)return g}catch(e){}return null}
+function saveGuest(g){try{localStorage.setItem(GUEST_KEY,JSON.stringify({nama:g.nama,perusahaan:g.perusahaan}))}catch(e){}}
+function clearGuest(){try{localStorage.removeItem(GUEST_KEY)}catch(e){}}
+
+// kirim ke Google Sheets (fire-and-forget; tidak pernah memblokir masuknya tamu)
+function sendToSheet(g){
+  if(!WEBHOOK_URL||WEBHOOK_URL.indexOf('PASTE_WEBHOOK')===0){console.warn('[Visitor Log] WEBHOOK_URL belum diisi — data tidak dikirim ke Google Sheets.');return Promise.resolve()}
+  const payload={nama:g.nama,perusahaan:g.perusahaan,kontak:g.kontak||'',kategori:g.kategori,waktu:new Date().toISOString(),halaman:location.href};
+  // text/plain + no-cors = "simple request" -> lolos tanpa preflight CORS ke Apps Script
+  console.log('[Visitor Log] Mengirim ke Google Sheets…',payload);
+  return fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
+    .catch(err=>console.warn('[Visitor Log] Gagal mengirim ke Google Sheets:',err))}
+
+function openGate(){
+  ['panel','v2d','help','npc','parts','kpi','card','certs','mach','sim','tlm','qc','intro'].forEach(i=>$('#'+i).classList.remove('on'));
+  $('#gateForm').reset();['gNama','gPer'].forEach(i=>$('#'+i).classList.remove('bad'));['eNama','ePer'].forEach(i=>$('#'+i).classList.remove('show'));
+  $('#gateGo').disabled=false;$('#gate').classList.add('on');open=true;
+  setTimeout(()=>{try{$('#gNama').focus({preventScroll:true})}catch(e){}},350)}
+function closeGate(){$('#gate').classList.remove('on');open=false;if(document.activeElement&&document.activeElement.blur)document.activeElement.blur()}
+
+function greetRec(){
+  const el=$('#npc .say');
+  if(guest)el.textContent=`“Selamat datang di kantor Pak Dede Deni Rahmawan, ${guest.nama} dari ${guest.perusahaan}! Silakan ikuti garis penunjuk di lantai untuk menjelajahi rekam jejak & lini manufaktur kami.”`;
+  else el.textContent=REC_DEFAULT;
+  $('#npcswap').style.display=guest?'':'none'}
+
+function submitGate(){
+  if(submitGate.busy)return;
+  const nama=$('#gNama').value.trim(),per=$('#gPer').value.trim();
+  const okN=!!nama,okP=!!per;
+  $('#gNama').classList.toggle('bad',!okN);$('#eNama').classList.toggle('show',!okN);
+  $('#gPer').classList.toggle('bad',!okP);$('#ePer').classList.toggle('show',!okP);
+  if(!okN){$('#gNama').focus();return}if(!okP){$('#gPer').focus();return}
+  guest={nama,perusahaan:per,kontak:$('#gKon').value.trim(),kategori:$('#gKat').value};
+  saveGuest(guest);sendToSheet(guest);
+  submitGate.busy=true;setTimeout(()=>{submitGate.busy=false},1500);
+  closeGate();showTrail();
+  toast(`Selamat datang, ${guest.nama}! Ikuti garis kuning di lantai untuk memulai`,3800)}
+// tidak memakai submit <form> (diblokir di iframe/pratinjau bersandbox) -> klik tombol & tekan Enter ditangani manual
+$('#gateForm').addEventListener('submit',e=>e.preventDefault());
+$('#gateGo').addEventListener('click',submitGate);
+$('#gateForm').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName!=='BUTTON'){e.preventDefault();submitGate()}});
+['gNama','gPer'].forEach(id=>$('#'+id).addEventListener('input',e=>{if(e.target.value.trim()){e.target.classList.remove('bad');$('#'+(id==='gNama'?'eNama':'ePer')).classList.remove('show')}}));
+
+// Fast Pass: langsung ke CV 2D tanpa mengisi form
+$('#gateFast').onclick=()=>{closeGate();show2d()};
+// "Bukan Anda?" di dialog resepsionis -> hapus identitas tersimpan & tampilkan form lagi
+$('#npcswap').onclick=()=>{clearGuest();guest=null;openGate()};
+
+// Inisialisasi: tamu lama (data tersimpan) langsung melihat intro; tamu baru wajib melewati Gateway
+guest=loadGuest();
+if(guest){$('#intro').classList.add('on');open=true;toast(`Selamat datang kembali, ${guest.nama}!`,3000)}
+else openGate();
 </script>
 </body>
 </html>
