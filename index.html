@@ -679,7 +679,7 @@ const TRL=(()=>{
   const W=[[0,14.8,0],[-10,14.8,0],[-10,5,0],[-6.5,5,0],[SP(0).px,SP(0).pz,0],
     [SP(1).px,SP(1).pz,1],
     [SP(2).px,SP(2).pz,2],
-    [0,-12,3],[SP(3).px,SP(3).pz,3],
+    [SP(3).px,SP(2).pz,3],[SP(3).px,SP(3).pz,3],
     [SP(4).px,SP(4).pz,4],
     [SP(5).px,SP(5).pz,5]];
   ROUTE=W;STOPK=[0,1,2,3,4,5].map(i=>W.findIndex(q=>q[0]===SP(i).px&&q[1]===SP(i).pz));
@@ -1369,7 +1369,8 @@ function closeAll(){['panel','v2d','help','npc','parts','kpi','card','certs','ma
 // =====================================================================
 //  AUTOPILOT: tur otomatis kamera/karakter perusahaan 1 -> 6 (berhenti sampai tombol Lanjut diklik)
 // =====================================================================
-const AUTO_SPEED=7.5;   // kecepatan jalan kamera/karakter; TANPA timer — berpindah hanya saat tombol Lanjut diklik
+const WALK_SPEED=3.4;   // kecepatan jalan santai (sebelumnya 9) — pelan seperti NPC
+const AUTO_SPEED=3.4;   // kecepatan jalan kamera/karakter; TANPA timer — berpindah hanya saat tombol Lanjut diklik
 const auto={on:false,k:1,stop:0,phase:'walk',t0:0};
 const wrapPI=a=>{while(a>Math.PI)a-=2*Math.PI;while(a<-Math.PI)a+=2*Math.PI;return a};
 function setAutoHud(){$('#autohud').innerHTML=auto.phase==='dwell'?`🎬 Tur Otomatis · ${NAMES[auto.stop]} · klik “Lanjut ke Perusahaan Berikutnya” di pop-up`:`🎬 Menuju ${NAMES[auto.stop]} (${auto.stop+1}/6) · <u>WASD / ketuk untuk berhenti</u>`}
@@ -1623,7 +1624,7 @@ const Snd=(()=>{
   nz(t,'bandpass',850+Math.random()*260,1.1,.30,.07,d);nz(t,'highpass',3200,.7,.07,.02,d);          // tumit + klik granit
   const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(120,t);o.frequency.exponentialRampToValueAtTime(55,t+.07);
   g.gain.setValueAtTime(.16,t);g.gain.exponentialRampToValueAtTime(.001,t+.09);o.connect(g);g.connect(d);o.start(t);o.stop(t+.1)}
- function foot(dt,mv){if(!mv){footT=0;return}footT-=dt;if(footT<=0){step();footT=.286}}
+ function foot(dt,mv){if(!mv){footT=0;return}footT-=dt;if(footT<=0){step();footT=.52}}
  function chime(){if(!can())return;const n=performance.now();if(n-lastChime<250)return;lastChime=n;const t=ctx.currentTime;
   [[1046.5,0],[1568,.09]].forEach(q=>[1,2.01,3.02].forEach((h,i)=>{const o=ctx.createOscillator(),g=ctx.createGain(),s=ctx.createGain();o.type='sine';o.frequency.value=q[0]*h;
    const pk=[.22,.07,.03][i],t0=t+q[1];g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(pk,t0+.01);g.gain.exponentialRampToValueAtTime(.0003,t0+1.3/(1+i*.5));
@@ -1820,7 +1821,7 @@ function loop(){
     let kx=(K.KeyD||K.ArrowRight?1:0)-(K.KeyA||K.ArrowLeft?1:0)+jx,kz=(K.KeyW||K.ArrowUp?1:0)-(K.KeyS||K.ArrowDown?1:0)+jz;
     const l=Math.hypot(kx,kz);if(l>1){kx/=l;kz/=l}
     const mx=kx*Math.cos(yaw)-kz*Math.sin(yaw),mz=-kx*Math.sin(yaw)-kz*Math.cos(yaw);
-    moving=l>.05;if(moving){pl.position.x+=mx*9*dt;pl.position.z+=mz*9*dt;pl.rotation.y=Math.atan2(mx,mz)}
+    moving=l>.05;if(moving){pl.position.x+=mx*WALK_SPEED*dt;pl.position.z+=mz*WALK_SPEED*dt;pl.rotation.y=Math.atan2(mx,mz)}
     if(K.Space&&pl.position.y<=.01)vy=8;
   }
   vy-=22*dt;pl.position.y=Math.max(0,pl.position.y+vy*dt);if(pl.position.y===0)vy=0;
@@ -1842,7 +1843,7 @@ function loop(){
   bolts.forEach((b,i)=>{if(!b.visible)return;b.rotation.y=t*2;b.position.y=1+Math.sin(t*2+b.userData.b)*.2;
     if(Math.hypot(p.x-b.position.x,p.z-b.position.z)<1.1&&p.y<1.5){b.visible=false;got++;$('#bolt').textContent=`Baut ${got}/12`;if(got===12)toast('Semua baut emas terkumpul!')}});
   belt.forEach(b=>{b.position.x+=2*dt;if(b.position.x>22)b.position.x=-22;b.rotation.y+=dt});
-  if(seated){sit(P,false);P.g.position.y=seated.h}else{if(pl.position.y>.05){walk(P,t*6,.5)}else if(moving)walk(P,t*11,.75);else walk(P,t*2,.05);P.g.position.y=moving&&pl.position.y<.05?Math.abs(Math.sin(t*11))*.06:0}office(t,dt);
+  if(seated){sit(P,false);P.g.position.y=seated.h}else{if(pl.position.y>.05){walk(P,t*6,.5)}else if(moving)walk(P,t*6,.5);else walk(P,t*2,.05);P.g.position.y=moving&&pl.position.y<.05?Math.abs(Math.sin(t*6))*.03:0}office(t,dt);
   const cd=9;_tp.set(p.x+Math.sin(yaw)*Math.cos(pitch)*cd,p.y*.5+1.5+Math.sin(pitch)*cd,p.z+Math.cos(yaw)*Math.cos(pitch)*cd);_tp.y=Math.min(_tp.y,H-.6);_tp.x=Math.max(-23.2,Math.min(23.2,_tp.x));_tp.z=Math.max(-16.2,Math.min(18.2,_tp.z));camPos.lerp(_tp,1-Math.exp(-dt*7));cam.position.copy(camPos);
   _lt.set(p.x,p.y*.5+1.6,p.z);lk.lerp(_lt,1-Math.exp(-dt*12));cam.lookAt(lk);
   // dinding logo memudar jika berada tepat di antara kamera dan pemain (saat pemain di balik dinding)
