@@ -1915,10 +1915,10 @@ $('#gateFast').onclick=()=>{closeGate();show2d()};
 // "Bukan Anda?" di dialog resepsionis -> hapus identitas tersimpan & tampilkan form lagi
 $('#npcswap').onclick=()=>{clearGuest();guest=null;openGate()};
 
-// Inisialisasi: tamu lama (data tersimpan) langsung melihat intro; tamu baru wajib melewati Gateway
-guest=loadGuest();
-if(guest){$('#intro').classList.add('on');open=true;toast(`Selamat datang kembali, ${guest.nama}!`,3000)}
-else openGate();
+// Inisialisasi: setiap kunjungan wajib melewati Gateway
+// Form SELALU tampil di setiap kunjungan / refresh (tamu wajib mengisi lagi). Data tersimpan tetap dicatat di localStorage.
+guest=null;
+openGate();
 </script>
 </body>
 </html>
