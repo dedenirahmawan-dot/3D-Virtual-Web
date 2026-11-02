@@ -453,11 +453,11 @@ function viewMat(seed,w=512,h=256){let sd=seed*977+13;const r=()=>(sd=(sd*16807)
  for(let i=0;i<16;i++){const tx=r()*w,ty=h*(.74+r()*.2),s=h*(.05+r()*.05);x.fillStyle='#8a5a3b';x.fillRect(tx-2,ty,4,s*.9);x.fillStyle=['#2f9e5f','#3fae6a','#27895a'][i%3];x.beginPath();x.arc(tx,ty-s*.2,s*.8,0,7);x.arc(tx-s*.5,ty+s*.1,s*.55,0,7);x.arc(tx+s*.5,ty+s*.1,s*.55,0,7);x.fill()}
  return new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c)})}
 const H=8.8;
-const fl=add(new THREE.PlaneGeometry(48,36),M(0x8995b3,.95),0,0,1);fl.rotation.x=-Math.PI/2;fl.castShadow=false;
-const grid=new THREE.GridHelper(48,24,0x6a7595,0x6a7595);grid.scale.z=36/48;grid.position.set(0,.01,1);grid.material.opacity=.3;grid.material.transparent=true;S.add(grid);
+const fl=add(new THREE.PlaneGeometry(48,40),M(0x8995b3,.95),0,0,3);fl.rotation.x=-Math.PI/2;fl.castShadow=false;
+const grid=new THREE.GridHelper(48,24,0x6a7595,0x6a7595);grid.scale.z=40/48;grid.position.set(0,.01,3);grid.material.opacity=.3;grid.material.transparent=true;S.add(grid);
 const tileT=(()=>{const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');x.fillStyle='#d3dbee';x.fillRect(0,0,256,256);x.fillStyle='#98a6c8';x.fillRect(0,0,128,128);x.fillRect(128,128,128,128);x.strokeStyle='#6f7da3';x.lineWidth=3;x.strokeRect(1.5,1.5,253,253);x.beginPath();x.moveTo(128,0);x.lineTo(128,256);x.moveTo(0,128);x.lineTo(256,128);x.stroke();
- const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(24,18);t.anisotropy=8;return t})();
-fl.material=new THREE.MeshStandardMaterial({map:tileT,color:0xe4e9f6,roughness:.7,metalness:0});grid.visible=false;
+ const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(24,20);t.anisotropy=8;return t})();
+fl.material=new THREE.MeshStandardMaterial({map:tileT,color:0xa3adc8,roughness:.95,metalness:0});grid.visible=false;
 const wallM=M(0xe8ecf6,.95);
 function wallTex(bg,pat,wain,rx){const c=document.createElement('canvas');c.width=256;c.height=512;const x=c.getContext('2d');
  x.fillStyle=bg;x.fillRect(0,0,256,512);
@@ -467,8 +467,8 @@ function wallTex(bg,pat,wain,rx){const c=document.createElement('canvas');c.widt
  x.strokeStyle='rgba(255,255,255,.28)';x.lineWidth=3;for(let i=0;i<4;i++)x.strokeRect(i*64+8,442,48,56);
  const t=new THREE.CanvasTexture(c);t.wrapS=THREE.RepeatWrapping;t.repeat.set(rx,1);t.anisotropy=8;return new THREE.MeshStandardMaterial({map:t,color:0xa9afc0,roughness:1,metalness:0})}
 const wBack=wallTex('#cfe0f5','#8fb0d8','#2b4a9a',12),wLeft=wallTex('#ddd6f2','#a99ad8','#4a3a8a',9),wRight=wallTex('#f5dfc4','#d9a877','#a8582e',9),wFront=wallTex('#d2ecde','#86c3a4','#2a7a62',12);
-add(new THREE.BoxGeometry(48,H,.6),wBack,0,H/2,-17);add(new THREE.BoxGeometry(.6,H,36),wLeft,-24,H/2,1);
-add(new THREE.BoxGeometry(.6,H,36),wRight,24,H/2,1);add(new THREE.BoxGeometry(48,H,.6),wFront,0,H/2,19);
+add(new THREE.BoxGeometry(48,H,.6),wBack,0,H/2,-17);add(new THREE.BoxGeometry(.6,H,40),wLeft,-24,H/2,3);
+add(new THREE.BoxGeometry(.6,H,40),wRight,24,H/2,3);add(new THREE.BoxGeometry(48,H,.6),wFront,0,H/2,23);
 add(new THREE.BoxGeometry(48,.5,.7),M(0x2b4fe0),0,.25,-16.6);
 for(let i=-3;i<=3;i++){add(new THREE.BoxGeometry(5.8,3.4,.1),M(0xffffff),i*6.6,5.5,-16.68);add(new THREE.BoxGeometry(5.4,3,.1),viewMat(i+4),i*6.6,5.5,-16.62)}
 function sign(txt){
@@ -976,9 +976,9 @@ function bigWin(wx,ry,zc,len,seed){const g=wallG(wx,0,zc,ry),h=4.6,yc=5.1,fr=mc(
  dec(gp(len,h),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.1,depthWrite:false}),0,yc,.09,g);fixG(g)}
 bigWin(23.7,-Math.PI/2,-5.4,7.6,1);bigWin(23.7,-Math.PI/2,9,7.2,2);bigWin(-23.7,Math.PI/2,-10.4,8.4,3);
 {const cm=new THREE.MeshStandardMaterial({color:0xf4f6fb,roughness:.9,side:THREE.DoubleSide});
- [-15,15].forEach(cx=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(18,36),cm);m.rotation.x=Math.PI/2;m.position.set(cx,H,1);S.add(m)});
- const sk=new THREE.Mesh(new THREE.PlaneGeometry(12,36),new THREE.MeshBasicMaterial({color:0xbfe3ff,transparent:true,opacity:.5,side:THREE.DoubleSide,depthWrite:false}));sk.rotation.x=Math.PI/2;sk.position.set(0,H+.02,1);S.add(sk);
- const bm=mc(0xf2f4fa,.6);for(let i=-3;i<=3;i++)dec(gb(.14,.14,36),bm,i*2,H-.05,1);for(let k=0;k<=8;k++)dec(gb(12,.14,.14),bm,0,H-.05,-17+k*4.5)}
+ [-15,15].forEach(cx=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(18,40),cm);m.rotation.x=Math.PI/2;m.position.set(cx,H,3);S.add(m)});
+ const sk=new THREE.Mesh(new THREE.PlaneGeometry(12,40),new THREE.MeshBasicMaterial({color:0xbfe3ff,transparent:true,opacity:.5,side:THREE.DoubleSide,depthWrite:false}));sk.rotation.x=Math.PI/2;sk.position.set(0,H+.02,3);S.add(sk);
+ const bm=mc(0xf2f4fa,.6);for(let i=-3;i<=3;i++)dec(gb(.14,.14,40),bm,i*2,H-.05,3);for(let k=0;k<=8;k++)dec(gb(12,.14,.14),bm,0,H-.05,-17+k*5)}
 // karpet area, marka lantai, lampu gantung, credenza, tempat sampah, tanaman besar, dinding atas
 function rug(cx,cz,w,d,c){flat(w,d,c,cx,.02,cz);flat(w-.6,d-.6,new THREE.Color(c).offsetHSL(0,0,.07).getHex(),cx,.034,cz)}
 [[-8,.5,0x2fb59f],[-8,-5.5,0x7a57c9],[-8,-11.5,0xf0a23a],[8,-11.5,0xd6457a],[8,-5.5,0x2aa5c9],[8,.5,0x6fae4a]].forEach(q=>rug(q[0],q[1],8,5,q[2]));rug(0,-1,8,4,0x3b3f5c);
@@ -1003,7 +1003,7 @@ function bins(x,z){[0x2b4fe0,0x1fa37a,0xf2b705].forEach((c,i)=>{dec(gb(.42,.75,.
 bins(-22.6,-9.5);bins(22.4,9);bins(-22.6,8);
 function bigPlant(x,z){dec(gc(.55,.42,1),mc(0xe8e2d4),x,.5,z);[[0,1.9,0,.85],[.4,1.5,.2,.6],[-.4,1.6,-.15,.6],[.1,2.6,0,.5]].forEach(q=>dec(gs(q[3]),mc(0x2f9e5f),x+q[0],q[1],z+q[2]));boxes.push({x,z,hx:1,hz:1})}
 // pot besar hanya di sudut ruangan: dua sudut depan lobi + sudut area kerja
-bigPlant(-22.4,17.3);bigPlant(22.4,17.3);bigPlant(-22.4,-6.8);bigPlant(-10.4,-15.5);bigPlant(10.4,-15.5);
+bigPlant(-22.4,21.3);bigPlant(22.4,21.3);bigPlant(-22.4,-6.8);bigPlant(-10.4,-15.5);bigPlant(10.4,-15.5);
 // zona diskusi santai (kiri tengah): meja bar bulat + 4 bangku di bawah rak dinding
 rug(-18.5,-2,6.8,6.8,0x3f7d6b);
 add(new THREE.CylinderGeometry(1.15,1.15,.1,24),wood,-18.5,.95,-2);add(new THREE.CylinderGeometry(.12,.12,.9,10),drk,-18.5,.45,-2);add(new THREE.CylinderGeometry(.55,.55,.06,16),drk,-18.5,.03,-2);
@@ -1314,7 +1314,7 @@ function hang(g,k,x,y,pw,ph,title,artist,fd){
   hang(g,'scream',-5.7,3.4,1.5,1.9,'The Scream','Edvard Munch · 1893',true);
   dec(gb(16,1.3,.03),fm(0x2b4a9a,.8),0,.65,.015,g);dec(gb(16,.07,.05),fm(0xc9a227,.5),0,1.33,.025,g);fixG(g)}
 { // dinding depan (menghadap ke dalam ruangan)
-  const g=wallG(0,0,18.65,Math.PI);
+  const g=wallG(0,0,22.65,Math.PI);
   hang(g,'pearl',17.5,3.4,1.5,1.9,'Girl with a Pearl Earring','Johannes Vermeer · c. 1665');
   hang(g,'sunflowers',21.2,3.4,1.5,1.9,'Sunflowers','Vincent van Gogh · 1888');
   hang(g,'lilies',-17.5,3.4,2.5,1.7,'Water Lilies','Claude Monet · 1906');
@@ -1743,7 +1743,7 @@ const TLN=[
   pts:['<b>Jaminan stok & delivery:</b> menyelaraskan forecast customer, safety stock, dan pasokan material bersama supplier.','<b>Pemantauan ramp-up:</b> kapasitas, kualitas, dan on-time delivery pada masa awal produksi massal.','<b>VAVE berkelanjutan & harga periodik:</b> mencari penghematan bersama dan menegosiasikan penyesuaian harga secara adil.','<b>Key account management:</b> review rutin dan penanganan keluhan sampai tuntas.'],
   tags:['Delivery','Safety Stock','Ramp-Up','Key Account']}];
 const tlSeen=new Set(),TLG={nodes:[],bead:null,glow:null};
-{const g=wallG(0,0,18.6,Math.PI),PW=28,PH=3.2,PX=80,CY=4.3;   // PX = piksel per unit; grup berputar 180°, +x lokal = kanan pemain
+{const g=wallG(0,0,22.6,Math.PI),PW=28,PH=3.2,PX=80,CY=4.3;   // PX = piksel per unit; grup berputar 180°, +x lokal = kanan pemain
  const nodeX=i=>-12+6*i;
  const bg=tex(PW*PX,PH*PX,(x,w,h)=>{
   let gr=x.createLinearGradient(0,0,0,h);gr.addColorStop(0,'#0a1129');gr.addColorStop(1,'#15214a');x.fillStyle=gr;x.fillRect(0,0,w,h);
@@ -1773,7 +1773,7 @@ const tlSeen=new Set(),TLG={nodes:[],bead:null,glow:null};
   TLG.nodes.push({grp,ring,halo,n,seen:false})});
  // manik cahaya yang berjalan di sepanjang garis neon
  const bead=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.1),new THREE.MeshBasicMaterial({map:glowT,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));bead.position.set(nodeX(0),LY,.12);g.add(bead);TLG.bead=bead;TLG.nx=nodeX;
- TLN.forEach((n,i)=>{const wx=12-6*i;poiRing(wx,16.6,n.n);POIS.push({k:'tl'+i,x:wx,z:16.7,r:3,txt:`Fase ${i+1} · ${n.s} (E)`,fn:()=>showTL(i)})})}
+ TLN.forEach((n,i)=>{const wx=12-6*i;poiRing(wx,20.6,n.n);POIS.push({k:'tl'+i,x:wx,z:20.7,r:3,txt:`Fase ${i+1} · ${n.s} (E)`,fn:()=>showTL(i)})})}
 function tlAnim(t){
  TLG.nodes.forEach((q,i)=>{const p=1+Math.sin(t*2.4+i*.9)*.09;q.ring.scale.setScalar(p);q.halo.material.opacity=.55+Math.sin(t*2.4+i*.9)*.2+(q.seen?.0:.2)});
  if(TLG.bead){const u=(t*.22)%1;TLG.bead.position.x=TLG.nx(0)+u*24;TLG.bead.material.opacity=Math.sin(u*Math.PI)*.95+.05}}
@@ -1809,7 +1809,7 @@ $('#tclose').onclick=closeAll;
 if(ENV){
  S.traverse(o=>{const m=o.material;if(!m||!m.isMeshStandardMaterial||m.envMap)return;
   if(m.roughness<=.62){m.envMap=ENV;m.envMapIntensity=m.metalness>.1?1:(m.transparent?1:.4);m.needsUpdate=true}});
- [[fl.material,.5,.1],[wood,.4,.35]].forEach(q=>{q[0].roughness=q[1];q[0].envMap=ENV;q[0].envMapIntensity=q[2];q[0].needsUpdate=true});
+ [[fl.material,.95,0],[wood,.4,.35]].forEach(q=>{q[0].roughness=q[1];q[0].envMap=ENV;q[0].envMapIntensity=q[2];q[0].needsUpdate=true});
  acr.envMap=ENV;acr.envMapIntensity=1;acr.needsUpdate=true}
 
 function loop(){
@@ -1825,7 +1825,7 @@ function loop(){
     if(K.Space&&pl.position.y<=.01)vy=8;
   }
   vy-=22*dt;pl.position.y=Math.max(0,pl.position.y+vy*dt);if(pl.position.y===0)vy=0;
-  const p=pl.position;p.x=Math.max(-22.6,Math.min(22.6,p.x));p.z=Math.max(-15.6,Math.min(17.4,p.z));
+  const p=pl.position;p.x=Math.max(-22,Math.min(22,p.x));p.z=Math.max(-14.8,Math.min(20.8,p.z));
   if(!seated&&!auto.on)boxes.forEach(b=>{const dx=p.x-b.x,dz=p.z-b.z,ox=(b.hx||2.5)-Math.abs(dx),oz=(b.hz||2.3)-Math.abs(dz);
     if(ox>0&&oz>0&&p.y<1.1){if(ox<oz)p.x+=Math.sign(dx||1)*ox;else p.z+=Math.sign(dz||1)*oz}});
   // terdekat
@@ -1844,7 +1844,12 @@ function loop(){
     if(Math.hypot(p.x-b.position.x,p.z-b.position.z)<1.1&&p.y<1.5){b.visible=false;got++;$('#bolt').textContent=`Baut ${got}/12`;if(got===12)toast('Semua baut emas terkumpul!')}});
   belt.forEach(b=>{b.position.x+=2*dt;if(b.position.x>22)b.position.x=-22;b.rotation.y+=dt});
   if(seated){sit(P,false);P.g.position.y=seated.h}else{if(pl.position.y>.05){walk(P,t*6,.5)}else if(moving)walk(P,t*6,.5);else walk(P,t*2,.05);P.g.position.y=moving&&pl.position.y<.05?Math.abs(Math.sin(t*6))*.03:0}office(t,dt);
-  const cd=9;_tp.set(p.x+Math.sin(yaw)*Math.cos(pitch)*cd,p.y*.5+1.5+Math.sin(pitch)*cd,p.z+Math.cos(yaw)*Math.cos(pitch)*cd);_tp.y=Math.min(_tp.y,H-.6);_tp.x=Math.max(-23.2,Math.min(23.2,_tp.x));_tp.z=Math.max(-16.2,Math.min(18.2,_tp.z));camPos.lerp(_tp,1-Math.exp(-dt*7));cam.position.copy(camPos);
+  const cd=9;_tp.set(p.x+Math.sin(yaw)*Math.cos(pitch)*cd,p.y*.5+1.5+Math.sin(pitch)*cd,p.z+Math.cos(yaw)*Math.cos(pitch)*cd);_tp.y=Math.min(_tp.y,H-.6);
+  {const CX=22.4,CZN=-15.4,CZP=21.4,ox=_tp.x-p.x,oz=_tp.z-p.z;let k=1;
+   if(ox>0)k=Math.min(k,(CX-p.x)/ox);else if(ox<0)k=Math.min(k,(-CX-p.x)/ox);
+   if(oz>0)k=Math.min(k,(CZP-p.z)/oz);else if(oz<0)k=Math.min(k,(CZN-p.z)/oz);
+   k=Math.max(.4,k);_tp.x=p.x+ox*k;_tp.z=p.z+oz*k}
+  _tp.x=Math.max(-22.4,Math.min(22.4,_tp.x));_tp.z=Math.max(-15.4,Math.min(21.4,_tp.z));camPos.lerp(_tp,1-Math.exp(-dt*7));cam.position.copy(camPos);
   _lt.set(p.x,p.y*.5+1.6,p.z);lk.lerp(_lt,1-Math.exp(-dt*12));cam.lookAt(lk);
   // dinding logo memudar jika berada tepat di antara kamera dan pemain (saat pemain di balik dinding)
   {const cz=cam.position.z,cx=cam.position.x;let occ=false;
@@ -1916,10 +1921,12 @@ $('#gateFast').onclick=()=>{closeGate();show2d()};
 // "Bukan Anda?" di dialog resepsionis -> hapus identitas tersimpan & tampilkan form lagi
 $('#npcswap').onclick=()=>{clearGuest();guest=null;openGate()};
 
-// Inisialisasi: setiap kunjungan wajib melewati Gateway
-// Form SELALU tampil di setiap kunjungan / refresh (tamu wajib mengisi lagi). Data tersimpan tetap dicatat di localStorage.
-guest=null;
-openGate();
+// Inisialisasi
+// Tamu yang sudah pernah mengisi (data tersimpan di localStorage) TIDAK diminta mengisi lagi: langsung ke layar intro.
+// Tamu baru wajib melewati Gateway. Salah orang? Resepsionis -> tombol "Bukan Anda?" menampilkan form lagi.
+guest=loadGuest();
+if(guest){$('#intro').classList.add('on');open=true;toast(`Selamat datang kembali, ${guest.nama}!`,3000)}
+else openGate();
 </script>
 </body>
 </html>
